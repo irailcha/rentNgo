@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/rentNgo/static/css/main.f2db3b31.css",
+    "main.js": "/rentNgo/static/js/main.8d3c7c2a.js",
+    "index.html": "/rentNgo/index.html",
+    "static/media/sprite.svg": "/rentNgo/static/media/sprite.8a128f56ccbbe6509c61ca675324daf0.svg",
+    "main.f2db3b31.css.map": "/rentNgo/static/css/main.f2db3b31.css.map",
+    "main.8d3c7c2a.js.map": "/rentNgo/static/js/main.8d3c7c2a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f2db3b31.css",
+    "static/js/main.8d3c7c2a.js"
+  ]
+}

@@ -1,5 +1,5 @@
-import React from 'react';
-
+import React, { useState } from 'react';
+import { ModalCarInfo } from '../ModalCarInfo/ModalCarInfo';
 import {
   CarBaseInfoStyle,
   ContainerTitleStyle,
@@ -23,29 +23,43 @@ export const CarCard = ({
     id,
     functionalities,
   },
-  onLearnMoreClick,
 }) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   return (
-    <CarCardStyle>
-      <div>
-        <Container>
-          <ImageStyle src={img} alt={make} />
-        </Container>
-        <ContainerTitleStyle>
-          <h2>
-            {make}
-            <TitleStyleSpan> {model}</TitleStyleSpan>, {year}
-          </h2>
-          <p>{rentalPrice}</p>
-        </ContainerTitleStyle>
-        <CarBaseInfoStyle>
-          {address} | {rentalCompany} | {type} | {model} | {id} |{' '}
-          {functionalities[0]}
-        </CarBaseInfoStyle>
-      </div>
-      <ButtonStyle type="button" onClick={onLearnMoreClick}>
-        Learn more
-      </ButtonStyle>
-    </CarCardStyle>
+    <div>
+      <CarCardStyle>
+        <div>
+          <Container>
+            <ImageStyle src={img} alt={make} />
+          </Container>
+          <ContainerTitleStyle>
+            <h2>
+              {make}
+              <TitleStyleSpan> {model}</TitleStyleSpan>, {year}
+            </h2>
+            <p>{rentalPrice}</p>
+          </ContainerTitleStyle>
+          <CarBaseInfoStyle>
+            {address} | {rentalCompany} | {type} | {model} | {id} |{' '}
+            {functionalities[0]}
+          </CarBaseInfoStyle>
+        </div>
+        <ButtonStyle
+          type="button"
+          onClick={() => {
+            setModalIsOpen(true);
+          }}
+        >
+          Learn more
+        </ButtonStyle>
+      </CarCardStyle>
+      {modalIsOpen && (
+        <ModalCarInfo
+          onClose={() => {
+            setModalIsOpen(false);
+          }}
+        />
+      )}
+    </div>
   );
 };

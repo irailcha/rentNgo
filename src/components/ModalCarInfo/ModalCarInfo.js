@@ -26,7 +26,7 @@ export const ModalCarInfo = ({ onClose, advertInfo }) => {
     mileage,
     rentalPrice,
   } = advertInfo;
-
+  console.log('Модалка');
   return (
     <ModalBackDrop>
       <ContainerModal>

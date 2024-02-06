@@ -16,10 +16,10 @@ export const CarList = ({ data }) => {
     setFavoriteList(prevList => {
       const favoriteAdvert = prevList.some(item => item.id === advertId);
       if (favoriteAdvert) {
-        console.log('Видалено');
+        console.log('Видалено', advertId);
         return prevList.filter(item => item.id !== advertId);
       } else {
-        console.log('Додано');
+        console.log('Додано', advertId);
         return [...prevList, { id: advertId }];
       }
     });

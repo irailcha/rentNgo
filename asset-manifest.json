@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/rentNgo/static/css/main.f2db3b31.css",
-    "main.js": "/rentNgo/static/js/main.f48301fa.js",
+    "main.js": "/rentNgo/static/js/main.f35cccc4.js",
     "index.html": "/rentNgo/index.html",
     "static/media/sprite.svg#sprite": "/rentNgo/static/media/sprite.8a128f56ccbbe6509c61ca675324daf0.svg",
     "main.f2db3b31.css.map": "/rentNgo/static/css/main.f2db3b31.css.map",
-    "main.f48301fa.js.map": "/rentNgo/static/js/main.f48301fa.js.map"
+    "main.f35cccc4.js.map": "/rentNgo/static/js/main.f35cccc4.js.map"
   },
   "entrypoints": [
     "static/css/main.f2db3b31.css",
-    "static/js/main.f48301fa.js"
+    "static/js/main.f35cccc4.js"
   ]
 }

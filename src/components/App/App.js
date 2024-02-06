@@ -28,6 +28,9 @@ const App = () => {
   // });
 
   useEffect(() => {
+    if (process.env.NODE_ENV === 'development') {
+      console.log('Code is running on the client.');
+    }
     async function getAdverts() {
       setIsLoading(true);
       setIsError(false);

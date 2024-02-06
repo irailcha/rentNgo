@@ -5,10 +5,20 @@ import {
   IconCloseStyle,
   ModalBackDrop,
   ButtonCloseStyle,
+  TitleStyle,
+  TitleStyleSpan,
+  ImageStyle,
+  ParagraphInfoStyle,
+  InfoTitleStyle,
+  RentalStyleContainer,
+  AccessoriesStyle,
+  ContainerInfoCar,
+  ButtonStyle,
+  InfoCarStyle,
 } from './ModalCarInfo.styled';
 
-export const ModalCarInfo = ({ onClose, advertInfo }) => {
-  if (!advertInfo) {
+export const ModalCarInfo = ({ onClose, fullArvertInfo }) => {
+  if (!fullArvertInfo) {
     return null; // або інша логіка обробки відсутності advertInfo
   }
   const {
@@ -25,8 +35,8 @@ export const ModalCarInfo = ({ onClose, advertInfo }) => {
     accessories,
     mileage,
     rentalPrice,
-  } = advertInfo;
-  console.log('Модалка');
+  } = fullArvertInfo;
+
   return (
     <ModalBackDrop>
       <ContainerModal>
@@ -35,27 +45,47 @@ export const ModalCarInfo = ({ onClose, advertInfo }) => {
             <use href={`${sprite}#icon-x-1`}></use>
           </IconCloseStyle>
         </ButtonCloseStyle>
-        <div>
-          <img src={img} alt={make} />
-          <h2>
-            {make}
-            {model}, {year}
-          </h2>
-          <p>
-            {address} | id:{id} | year:{year} | Type: {type} | Fuel Consumption:{' '}
-            {fuelConsumption} | Engine Size: {engineSize} |{' '}
-          </p>
-          <p>{description}</p>
-          <h3>Accessories and functionalities:</h3>
-          <p>{accessories}</p>
-          <h3>Rental Conditions: </h3>
-          <p>Minimum age : 25 </p>
-          <p>Valid driver’s license</p>
-          <p>Security deposite required </p>
-          <p>Mileage:{mileage}</p>
-          <p>Price: {rentalPrice}</p>
-          <button>Rental car</button>
-        </div>
+        <ImageStyle src={img} alt={make} />
+        <ContainerInfoCar>
+          <div>
+            <TitleStyle>
+              {make} <TitleStyleSpan> {model} </TitleStyleSpan>, {year}
+            </TitleStyle>
+
+            <ParagraphInfoStyle>
+              <span>{address}</span> | <span>id: {id}</span> |{' '}
+              <span>year: {year}</span> | <span>Type: {type}</span> |{' '}
+              <span>Fuel Consumption: {fuelConsumption}</span> |{' '}
+              <span>Engine Size: {engineSize}</span>
+            </ParagraphInfoStyle>
+            <InfoCarStyle>{description}</InfoCarStyle>
+          </div>
+          <div>
+            <InfoTitleStyle>Accessories and functionalities:</InfoTitleStyle>
+            <AccessoriesStyle>
+              {accessories.map((accessorie, index) => (
+                <li key={index}>{accessorie}</li>
+              ))}
+            </AccessoriesStyle>
+          </div>
+          <div>
+            <InfoTitleStyle>Rental Conditions: </InfoTitleStyle>
+            <RentalStyleContainer>
+              <li>
+                Minimum age : <span>25</span>{' '}
+              </li>
+              <li>Valid driver’s license</li>
+              <li>Security deposite required </li>
+              <li>
+                Mileage: <span> {mileage}</span>
+              </li>
+              <li>
+                Price: <span>{rentalPrice}</span>
+              </li>
+            </RentalStyleContainer>
+          </div>
+          <ButtonStyle>Rental car</ButtonStyle>
+        </ContainerInfoCar>
       </ContainerModal>
     </ModalBackDrop>
   );

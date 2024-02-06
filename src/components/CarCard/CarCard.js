@@ -10,8 +10,8 @@ import {
   CarCardStyle,
 } from './CarCard.styled';
 
-export const CarCard = ({
-  car: {
+export const CarCard = ({ car }) => {
+  const {
     img,
     make,
     model,
@@ -22,9 +22,9 @@ export const CarCard = ({
     type,
     id,
     functionalities,
-  },
-}) => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  } = car;
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div>
       <CarCardStyle>
@@ -44,20 +44,15 @@ export const CarCard = ({
             {functionalities[0]}
           </CarBaseInfoStyle>
         </div>
-        <ButtonStyle
-          type="button"
-          onClick={() => {
-            setModalIsOpen(true);
-          }}
-        >
+        <ButtonStyle type="button" onClick={() => setIsOpen(true)}>
           Learn more
         </ButtonStyle>
       </CarCardStyle>
-      {modalIsOpen && (
+      {isOpen && (
         <ModalCarInfo
-          onClose={() => {
-            setModalIsOpen(false);
-          }}
+          isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
+          fullArvertInfo={car}
         />
       )}
     </div>

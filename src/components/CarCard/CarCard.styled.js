@@ -34,6 +34,7 @@ export const ImageStyle = styled.img`
   object-fit: cover;
   object-position: center;
   height: 268px;
+  margin-bottom: 14px;
 `;
 
 export const Container = styled.div`

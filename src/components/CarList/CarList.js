@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { CarCard } from '../CarCard/CarCard';
 
 import sprite from '../../images/sprite.svg#sprite';
@@ -9,29 +9,19 @@ import {
   IconFavoriteStyle,
 } from './CarList.styled';
 
-export const CarList = ({ data }) => {
-  const [favoriteList, setFavoriteList] = useState([]);
-
-  const changeFavoriteList = advertId => {
-    setFavoriteList(prevList => {
-      const favoriteAdvert = prevList.some(item => item.id === advertId);
-      if (favoriteAdvert) {
-        console.log('Видалено', advertId);
-        return prevList.filter(item => item.id !== advertId);
-      } else {
-        console.log('Додано', advertId);
-        return [...prevList, { id: advertId }];
-      }
-    });
-  };
-
+export const CarList = ({
+  data,
+   favoriteList, changeFavoriteList
+}) => {
   return (
     <CardListStyle>
       {data.map(advert => (
         <CardItemStyle key={advert.id}>
-          <ButtonFavoriteStyle onClick={() => changeFavoriteList(advert.id)}>
+          <ButtonFavoriteStyle
+          onClick={() => changeFavoriteList(advert.id)}
+          >
             <IconFavoriteStyle
-              isFavorite={favoriteList.some(item => item.id === advert.id)}
+            isFavorite={favoriteList.some(item => item.id === advert.id)}
             >
               <use href={`${sprite}#icon-normal-1`}></use>
             </IconFavoriteStyle>

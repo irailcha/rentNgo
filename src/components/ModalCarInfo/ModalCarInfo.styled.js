@@ -16,7 +16,7 @@ export const ContainerModal = styled.div`
 
   z-index: 111;
   width: 541px;
-  max-height: 80vh; /* або інше значення відповідно до вашого дизайну */
+  /* max-height: 100vh; або інше значення відповідно до вашого дизайну */
   overflow-y: auto;
   background-color: #ffffff;
 
@@ -42,7 +42,7 @@ export const ButtonCloseStyle = styled.button`
 
 export const TitleStyle = styled.h2`
   display: flex;
-  margin-bottom: 8px;
+  /* margin-bottom: 8px; */
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
@@ -61,7 +61,7 @@ export const ParagraphInfoStyle = styled.p`
   font-weight: 400;
   font-size: 12px;
   line-height: 18px;
-  margin-bottom: 14px;
+  /* margin-bottom: 14px; */
   color: rgba(18, 20, 23, 0.5);
 `;
 
@@ -86,7 +86,6 @@ export const AccessoriesStyle = styled.ul`
 export const RentalStyleContainer = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
 
   li {
     border: none;
@@ -110,7 +109,6 @@ export const RentalStyleContainer = styled.ul`
 export const ContainerInfoCar = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 24px;
 `;
 
 export const ButtonStyle = styled.button`

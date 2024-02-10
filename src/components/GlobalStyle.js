@@ -204,7 +204,7 @@ export const globalStyles = css`
     display: block;
     width: 100%;
     border-radius: 12px;
-    margin-bottom: 14px;
+    
     height: auto;
   }
 `;

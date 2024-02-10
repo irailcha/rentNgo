@@ -1,21 +1,30 @@
-import { RotatingLines } from "react-loader-spinner";
+import { RotatingLines } from 'react-loader-spinner';
 
 export const Loader = () => {
+  const wrapperStyle = {
+    color: 'blue',
+    position: 'fixed',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%',
+  };
   return (
-    <RotatingLines
-      visible={true}
-      height="150"
-      width="150"
-      color="#3470FF"
-      strokeWidth="5"
-      animationDuration="0.75"
-      ariaLabel="rotating-lines-loading"
-      wrapperStyle={{}}
-      wrapperClass=""
-      //   position="absolute"
-      //   top="-50%"
-      //   left="50%"
-      //   transform="translate(-50%, -50%)"
-    />
+    <div style={wrapperStyle}>
+      <RotatingLines
+        visible={true}
+        height="150"
+        width="150"
+        strokeWidth="5"
+        animationDuration="0.75"
+        ariaLabel="rotating-lines-loading"
+        wrapperStyle={{}}
+        wrapperClass=""
+      />
+    </div>
   );
 };

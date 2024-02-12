@@ -54,7 +54,7 @@ export const NavLinkPage = styled(NavLink)`
   font-size: 20px;
   line-height: 22px;
 
-  &:active {
+  &.active {
     color: #0b44cd;
   }
 `;

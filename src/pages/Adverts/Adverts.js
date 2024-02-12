@@ -3,6 +3,7 @@ import { CarList } from '../../components/CarList/CarList';
 import { Loader } from '../../components/helpers/Loader';
 import { fetchAdverts } from '../../Api';
 import { ButtonStyle } from './Adverts.style';
+import { SearchForm } from '../../components/SearchForm/SearchForm';
 
 const Adverts = () => {
   const [arvertList, setArvertList] = useState([]);
@@ -11,6 +12,8 @@ const Adverts = () => {
   const [page, setPage] = useState(1);
   const [isLoadMoreHidden, setIsLoadMoreHidden] = useState(true);
   const [favoriteList, setFavoriteList] = useState([]);
+  const [make, setMake] = useState('');
+
   useEffect(() => {
     async function getAdverts() {
       setIsLoading(true);
@@ -49,17 +52,26 @@ const Adverts = () => {
       }
     });
   };
+
+  const visibleAdverts = arvertList.filter(advert =>
+    advert.make.toLowerCase().includes(make.toLowerCase())
+  );
+  console.log(visibleAdverts);
+
   return (
     <div>
-      {' '}
+      <SearchForm setMake={setMake} />
+
       {isLoading && !isError && <Loader />}
-      {arvertList.length > 0 && (
+
+      {visibleAdverts.length > 0 && (
         <CarList
-          data={arvertList}
+          visibleAdverts={visibleAdverts}
           favoriteList={favoriteList}
           changeFavoriteList={changeFavoriteList}
         />
       )}
+
       {!isLoadMoreHidden && (
         <ButtonStyle onClick={loadMore}>Load More</ButtonStyle>
       )}

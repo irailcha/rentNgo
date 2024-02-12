@@ -10,18 +10,17 @@ import {
 } from './CarList.styled';
 
 export const CarList = ({
-  data,
-   favoriteList, changeFavoriteList
+  visibleAdverts,
+  favoriteList,
+  changeFavoriteList,
 }) => {
   return (
     <CardListStyle>
-      {data.map(advert => (
+      {visibleAdverts.map(advert => (
         <CardItemStyle key={advert.id}>
-          <ButtonFavoriteStyle
-          onClick={() => changeFavoriteList(advert.id)}
-          >
+          <ButtonFavoriteStyle onClick={() => changeFavoriteList(advert.id)}>
             <IconFavoriteStyle
-            isFavorite={favoriteList.some(item => item.id === advert.id)}
+              isFavorite={favoriteList.some(item => item.id === advert.id)}
             >
               <use href={`${sprite}#icon-normal-1`}></use>
             </IconFavoriteStyle>

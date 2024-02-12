@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const CardListStyle = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
 `;
 
 export const CardItemStyle = styled.li`

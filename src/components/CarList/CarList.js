@@ -18,7 +18,7 @@ export const CarList = ({
     <CardListStyle>
       {visibleAdverts.map(advert => (
         <CardItemStyle key={advert.id}>
-          <ButtonFavoriteStyle onClick={() => changeFavoriteList(advert.id)}>
+          <ButtonFavoriteStyle onClick={() => changeFavoriteList(advert)}>
             <IconFavoriteStyle
               isFavorite={favoriteList.some(item => item.id === advert.id)}
             >

@@ -13,12 +13,12 @@ export const Layout = () => {
   return (
     <div>
       <HeaderContainer>
-        <LogoLinkStyle to="/">Rent-n-go</LogoLinkStyle>
+        <LogoLinkStyle to="/home">Rent-n-go</LogoLinkStyle>
 
         <NavContainer>
           <NavLinkPage to="/">Home</NavLinkPage>
           <NavLinkPage to="/adverts">Adverts</NavLinkPage>
-          <NavLinkPage to="/favorite">
+          <NavLinkPage to="/adverts/favorite">
             <IconFavoriteStyle>
               <use href={`${sprite}#icon-normal-1`}></use>
             </IconFavoriteStyle>

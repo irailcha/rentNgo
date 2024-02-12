@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation, Link } from 'react-router-dom';
 import { CarList } from '../../components/CarList/CarList';
 import { Loader } from '../../components/helpers/Loader';
 import { fetchAdverts } from '../../Api';
@@ -13,6 +14,8 @@ const Adverts = () => {
   const [isLoadMoreHidden, setIsLoadMoreHidden] = useState(true);
   const [favoriteList, setFavoriteList] = useState([]);
   const [make, setMake] = useState('');
+
+  const location = useLocation();
 
   useEffect(() => {
     async function getAdverts() {
@@ -44,22 +47,22 @@ const Adverts = () => {
 
   const changeFavoriteList = advertId => {
     setFavoriteList(prevList => {
-      const favoriteAdvert = prevList.some(item => item.id === advertId);
+      const favoriteAdvert = prevList.some(item => item === advertId);
       if (favoriteAdvert) {
-        const updateFavoriteList = prevList.filter(
-          item => item.id !== advertId
-        );
+        const updateFavoriteList = prevList.filter(item => item !== advertId);
         localStorage.setItem(
           'favoriteList',
           JSON.stringify(updateFavoriteList)
         );
+        console.log('Видалено', updateFavoriteList);
         return updateFavoriteList;
       } else {
-        const updateFavoriteList = [...prevList, { id: advertId }];
+        const updateFavoriteList = [...prevList, advertId];
         localStorage.setItem(
           'favoriteList',
           JSON.stringify(updateFavoriteList)
         );
+        console.log('Додано', updateFavoriteList);
         return updateFavoriteList;
       }
     });
@@ -75,7 +78,9 @@ const Adverts = () => {
       <SearchForm setMake={setMake} />
 
       {isLoading && !isError && <Loader />}
-
+      <Link to="/adverts/favorite" state={{ from: location }}>
+        Go to Favorites
+      </Link>
       {visibleAdverts.length > 0 && (
         <CarList
           visibleAdverts={visibleAdverts}

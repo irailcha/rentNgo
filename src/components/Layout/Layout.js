@@ -13,7 +13,7 @@ export const Layout = () => {
   return (
     <div>
       <HeaderContainer>
-        <LogoLinkStyle href="/">Rent-n-go</LogoLinkStyle>
+        <LogoLinkStyle to="/">Rent-n-go</LogoLinkStyle>
 
         <NavContainer>
           <NavLinkPage to="/">Home</NavLinkPage>

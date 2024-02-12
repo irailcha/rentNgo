@@ -46,9 +46,21 @@ const Adverts = () => {
     setFavoriteList(prevList => {
       const favoriteAdvert = prevList.some(item => item.id === advertId);
       if (favoriteAdvert) {
-        return prevList.filter(item => item.id !== advertId);
+        const updateFavoriteList = prevList.filter(
+          item => item.id !== advertId
+        );
+        localStorage.setItem(
+          'favoriteList',
+          JSON.stringify(updateFavoriteList)
+        );
+        return updateFavoriteList;
       } else {
-        return [...prevList, { id: advertId }];
+        const updateFavoriteList = [...prevList, { id: advertId }];
+        localStorage.setItem(
+          'favoriteList',
+          JSON.stringify(updateFavoriteList)
+        );
+        return updateFavoriteList;
       }
     });
   };

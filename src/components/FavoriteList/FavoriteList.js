@@ -9,7 +9,8 @@ export const FavoriteList = ({ favoriteList }) => {
         <ul>
           {favoriteList.map(advert => (
             <li key={advert.id}>
-              <CarCard car={advert} />
+              {/* {<CarCard car={advert} />} */}
+              {advert.id}
             </li>
           ))}
         </ul>

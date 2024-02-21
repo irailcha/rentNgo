@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, Link } from 'react-router-dom';
 import { CarList } from '../../components/CarList/CarList';
 import { Loader } from '../../components/helpers/Loader';
 import { fetchAdverts } from '../../Api';
@@ -14,8 +13,6 @@ const Adverts = () => {
   const [isLoadMoreHidden, setIsLoadMoreHidden] = useState(true);
   const [favoriteList, setFavoriteList] = useState([]);
   const [make, setMake] = useState('');
-
-  const location = useLocation();
 
   useEffect(() => {
     async function getAdverts() {
@@ -76,11 +73,8 @@ const Adverts = () => {
   return (
     <div>
       <SearchForm setMake={setMake} />
-
       {isLoading && !isError && <Loader />}
-      <Link to="/adverts/favorite" state={{ from: location }}>
-        Go to Favorites
-      </Link>
+
       {visibleAdverts.length > 0 && (
         <CarList
           visibleAdverts={visibleAdverts}

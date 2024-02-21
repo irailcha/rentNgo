@@ -1,11 +1,13 @@
+import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
-
-import Home from '../../pages/Home/Home';
-import Adverts from '../../pages/Adverts/Adverts';
-import Favorite from '../../pages/Favorite/Favorite';
-import NotFound from '../../pages/NotFound';
 import { Layout } from '../Layout/Layout';
 import { BodyContainer } from './App.styled';
+import { LoginPage } from '../../pages/LoginPage/LoginPage';
+import { RegisterPage } from '../../pages/RegisterPage/RegisterPage';
+const Home = lazy(() => import('../../pages/Home/Home'));
+const Adverts = lazy(() => import('../../pages/Adverts/Adverts'));
+const Favorite = lazy(() => import('../../pages/Favorite/Favorite'));
+const NotFound = lazy(() => import('../../pages/NotFound'));
 
 const App = () => {
   return (
@@ -14,9 +16,11 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="adverts" element={<Adverts />} />
-            <Route path="adverts/:favorite" element={<Favorite />} />
+            <Route path="adverts" element={<Adverts />} />n
+            <Route path="adverts/favorite" element={<Favorite />} />
             <Route path="*" element={<NotFound />} />
+            <Route path="login" element={<LoginPage />} />
+            <Route path="register" element={<RegisterPage />} />
           </Route>
         </Routes>
       </BodyContainer>

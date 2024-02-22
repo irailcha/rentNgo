@@ -7,6 +7,7 @@ import { RegisterPage } from '../../pages/RegisterPage/RegisterPage';
 const Home = lazy(() => import('../../pages/Home/Home'));
 const Adverts = lazy(() => import('../../pages/Adverts/Adverts'));
 const Favorite = lazy(() => import('../../pages/Favorite/Favorite'));
+const BasketPage = lazy(() => import('../../pages/BasketPage/BasketPage'));
 const NotFound = lazy(() => import('../../pages/NotFound'));
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
             <Route index element={<Home />} />
             <Route path="adverts" element={<Adverts />} />n
             <Route path="adverts/favorite" element={<Favorite />} />
+            <Route path="basket" element={<BasketPage />} />
             <Route path="*" element={<NotFound />} />
             <Route path="login" element={<LoginPage />} />
             <Route path="register" element={<RegisterPage />} />

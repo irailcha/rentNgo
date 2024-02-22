@@ -1,8 +1,7 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate, NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { loginField, setIsLogin } from '../../redux/userSlice';
+import { loginField, setIsLogin } from '../../redux/Auth/userSlice';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -10,7 +9,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
-import { ButtonStyle } from './UserLogin.style';
+import { ButtonStyle, AdditionalStyle } from './UserLogin.style';
 
 export const UserLogin = () => {
   const dispatch = useDispatch();
@@ -74,9 +73,14 @@ export const UserLogin = () => {
                   Sign in
                 </ButtonStyle>
               </Grid>
+              <Grid item xs={12}>
+                <AdditionalStyle>
+                  <p>Don't have an account yet? </p>
+                  <NavLink to="/register">Sign up</NavLink>
+                </AdditionalStyle>
+              </Grid>
             </Grid>
           </Box>
-          {/* </Formik> */}
         </Box>
       </Container>
     </ThemeProvider>

@@ -1,4 +1,3 @@
-import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { UserMenu } from '../UserMenu/UserMenu';
 import { FiUserCheck } from 'react-icons/fi';
@@ -29,7 +28,7 @@ export const AppBar = () => {
           <SlHeart />
         </NavLinkPage>
 
-        <NavLinkPage to="/busket">
+        <NavLinkPage to="/basket">
           <GrBasket />
         </NavLinkPage>
       </NavContainer>
@@ -37,12 +36,12 @@ export const AppBar = () => {
         <UserMenu />
       ) : (
         <NavContainer>
-          <NavLink to="/login">
+          <NavLinkPage to="/login">
             <FiUserCheck /> Sign in
-          </NavLink>
-          <NavLink to="/register">
+          </NavLinkPage>
+          <NavLinkPage to="/register">
             <FiUserPlus /> Sign up
-          </NavLink>
+          </NavLinkPage>
         </NavContainer>
       )}
     </HeaderContainer>

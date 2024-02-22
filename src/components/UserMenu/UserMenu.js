@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { setIsLogin } from '../../redux/userSlice';
-import { FiLogOut } from 'react-icons/fi';
+import { setIsLogin } from '../../redux/Auth/userSlice';
+import { ImExit } from 'react-icons/im';
 import { useNavigate } from 'react-router-dom';
 export const UserMenu = () => {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ export const UserMenu = () => {
     <div>
       Welcome, {name}{' '}
       <button onClick={handleSubmit}>
-        <FiLogOut />
+        <ImExit />
       </button>
     </div>
   );

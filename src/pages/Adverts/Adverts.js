@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+
 import { CarList } from '../../components/CarList/CarList';
 import { Loader } from '../../components/helpers/Loader';
 import { fetchAdverts } from '../../Api';
@@ -13,6 +15,8 @@ const Adverts = () => {
   const [isLoadMoreHidden, setIsLoadMoreHidden] = useState(true);
   const [favoriteList, setFavoriteList] = useState([]);
   const [make, setMake] = useState('');
+
+  const isLogin = useSelector(state => state.user.isLogin);
 
   useEffect(() => {
     async function getAdverts() {
@@ -44,24 +48,21 @@ const Adverts = () => {
 
   const changeFavoriteList = advertId => {
     setFavoriteList(prevList => {
-      const favoriteAdvert = prevList.some(item => item === advertId);
-      if (favoriteAdvert) {
-        const updateFavoriteList = prevList.filter(item => item !== advertId);
-        localStorage.setItem(
-          'favoriteList',
-          JSON.stringify(updateFavoriteList)
-        );
-        console.log('Видалено', updateFavoriteList);
-        return updateFavoriteList;
+      const updatedList = new Set(prevList);
+
+      if (updatedList.has(advertId)) {
+        updatedList.delete(advertId);
+        console.log('Видалено', advertId);
       } else {
-        const updateFavoriteList = [...prevList, advertId];
-        localStorage.setItem(
-          'favoriteList',
-          JSON.stringify(updateFavoriteList)
-        );
-        console.log('Додано', updateFavoriteList);
-        return updateFavoriteList;
+        updatedList.add(advertId);
+        console.log('Додано', advertId);
       }
+
+      localStorage.setItem(
+        'favoriteList',
+        JSON.stringify(Array.from(updatedList))
+      );
+      return Array.from(updatedList);
     });
   };
 
@@ -83,7 +84,7 @@ const Adverts = () => {
         />
       )}
 
-      {!isLoadMoreHidden && (
+      {!isLoadMoreHidden && isLogin && (
         <ButtonStyle onClick={loadMore}>Load More</ButtonStyle>
       )}
     </div>

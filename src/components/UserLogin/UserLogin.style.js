@@ -18,3 +18,16 @@ export const ButtonStyle = styled.button`
     cursor: pointer;
   }
 `;
+
+export const AdditionalStyle = styled.div`
+  display: flex;
+  justify-content: space-around;
+
+  & :last-child {
+    color: #3470ff;
+    :hover {
+      color: #0b44cd;
+      text-decoration: underline;
+    }
+  }
+`;

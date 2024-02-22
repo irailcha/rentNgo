@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { registrationField, setIsLogin } from '../../redux/userSlice';
+import { registrationField, setIsLogin } from '../../redux/Auth/userSlice';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';

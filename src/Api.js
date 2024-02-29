@@ -8,14 +8,6 @@ export const fetchAdverts = async (page = 1, limit = 12) => {
   return data;
 };
 
-// export const fetchAdvertById = async ({ id }) => {
-//   const response = await axios.get(`/adverts/${id}`);
-
-//   const { data: advertId } = response;
-
-//   return advertId;
-// };
-
 export const fetchCarImages = async () => {
   const { data } = await axios.get(`/adverts`);
   const Images = data.map(advert => advert.img);

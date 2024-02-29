@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { registrationField, setIsLogin } from '../../redux/Auth/userSlice';
+import { register } from '../../redux/Auth/operations';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -17,9 +17,13 @@ export const UserRegister = () => {
   const navigate = useNavigate();
 
   const handleSubmit = value => {
-    dispatch(registrationField({ field: 'name', value: value.name }));
-    dispatch(registrationField({ field: 'email', value: value.email }));
-    dispatch(registrationField({ field: 'password', value: value.password }));
+    dispatch(
+      register({
+        name: value.name,
+        email: value.email,
+        password: value.password,
+      })
+    );
     navigate('/', { replace: true });
     console.log(value);
   };
@@ -46,7 +50,7 @@ export const UserRegister = () => {
             noValidate
             onSubmit={handleSubmit}
             sx={{ mt: 3 }}
-            autoComplete
+            autoComplete="true"
           >
             <Grid container spacing={2}>
               <Grid item xs={12}>
@@ -74,12 +78,7 @@ export const UserRegister = () => {
                 />
               </Grid>
               <Grid item xs={12}>
-                <ButtonStyle
-                  type="submit"
-                  onClick={() => dispatch(setIsLogin(true))}
-                >
-                  Sign up
-                </ButtonStyle>
+                <ButtonStyle type="submit">Sign up</ButtonStyle>
               </Grid>
             </Grid>
           </Box>

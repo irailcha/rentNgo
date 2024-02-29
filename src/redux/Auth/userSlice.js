@@ -1,39 +1,34 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { register, login, logOut } from './operations';
 
 const initialState = {
-  registration: {
-    name: '',
-    email: '',
-    password: '',
-  },
-  login: {
-    email: '',
-    password: '',
-  },
-  isLogin: false,
+  user: { name: null, email: null },
+  token: null,
+  isLoggedIn: false,
+  isRefreshing: false,
 };
+
 const userSlice = createSlice({
-  // Ім'я слайсу
-  name: 'user',
-  // Початковий стан редюсера слайсу
+  name: 'auth',
   initialState,
-  // Об'єкт редюсерів
-  reducers: {
-    registrationField: (state, action) => {
-      const { field, value } = action.payload;
-      state.registration[field] = value;
-    },
-    loginField: (state, action) => {
-      const { field, value } = action.payload;
-      state.login[field] = value;
-    },
-    setIsLogin: (state, action) => {
-      state.isLogin = action.payload;
-    },
+  reducers: {},
+  extraReducers: builder => {
+    builder.addCase(register.fulfilled, (state, action) => {
+      state.user = action.payload.user;
+      state.token = action.payload.token;
+      state.isLoggedIn = true;
+    });
+    builder.addCase(login.fulfilled, (state, action) => {
+      state.user = action.payload.user;
+      state.token = action.payload.token;
+      state.isLoggedIn = true;
+    });
+    builder.addCase(logOut.fulfilled, state => {
+      state.user = { name: null, email: null };
+      state.token = null;
+      state.isLoggedIn = false;
+    });
   },
 });
 
-// Генератори екшенів
-export const { registrationField, loginField, setIsLogin } = userSlice.actions;
-// Редюсер слайсу
 export const userReducer = userSlice.reducer;

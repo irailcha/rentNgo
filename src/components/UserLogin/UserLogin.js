@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { loginField, setIsLogin } from '../../redux/Auth/userSlice';
+import { login } from '../../redux/Auth/operations';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -15,8 +15,8 @@ export const UserLogin = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleSubmit = value => {
-    dispatch(loginField({ field: 'email', value: value.email }));
-    dispatch(loginField({ field: 'password', value: value.password }));
+    dispatch(login({ field: 'email', value: value.email }));
+    dispatch(login({ field: 'password', value: value.password }));
     navigate('/', { replace: true });
     console.log(value);
   };
@@ -66,12 +66,7 @@ export const UserLogin = () => {
                 />
               </Grid>
               <Grid item xs={12}>
-                <ButtonStyle
-                  type="submit"
-                  onClick={() => dispatch(setIsLogin(true))}
-                >
-                  Sign in
-                </ButtonStyle>
+                <ButtonStyle type="submit">Sign in</ButtonStyle>
               </Grid>
               <Grid item xs={12}>
                 <AdditionalStyle>

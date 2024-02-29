@@ -62,3 +62,13 @@ export const NavLinkPage = styled(NavLink)`
 export const UserBarButtonStyle = styled.button`
   position: relative;
 `;
+
+export const LinksStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  a:hover {
+    color: #0b44cd;
+  }
+`;

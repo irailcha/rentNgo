@@ -3,17 +3,18 @@ import { UserMenu } from '../UserMenu/UserMenu';
 import { FiUserCheck } from 'react-icons/fi';
 import { FiUserPlus } from 'react-icons/fi';
 import { SlHeart } from 'react-icons/sl';
-import { GrBasket } from 'react-icons/gr';
+import { selectIsLoggedIn } from '../../redux/Auth/selectors';
 
 import {
   HeaderContainer,
   LogoLinkStyle,
   NavContainer,
   NavLinkPage,
+  LinksStyle,
 } from './AppBar.style';
 
 export const AppBar = () => {
-  const isLogin = useSelector(state => state.user.isLogin);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
     <HeaderContainer>
@@ -27,21 +28,25 @@ export const AppBar = () => {
         <NavLinkPage to="/adverts/favorite">
           <SlHeart />
         </NavLinkPage>
-
-        <NavLinkPage to="/basket">
-          <GrBasket />
-        </NavLinkPage>
       </NavContainer>
-      {isLogin ? (
+      <NavContainer>
+        <LinksStyle>
+          <a href="tel:+1234567890">+1234567890</a>
+          <a href="example@example.com">example@example.com</a>
+        </LinksStyle>
+      </NavContainer>
+      {isLoggedIn ? (
         <UserMenu />
       ) : (
         <NavContainer>
-          <NavLinkPage to="/login">
-            <FiUserCheck /> Sign in
-          </NavLinkPage>
-          <NavLinkPage to="/register">
-            <FiUserPlus /> Sign up
-          </NavLinkPage>
+          <LinksStyle>
+            <NavLinkPage to="/login">
+              <FiUserCheck /> Sign in
+            </NavLinkPage>
+            <NavLinkPage to="/register">
+              <FiUserPlus /> Sign up
+            </NavLinkPage>
+          </LinksStyle>
         </NavContainer>
       )}
     </HeaderContainer>

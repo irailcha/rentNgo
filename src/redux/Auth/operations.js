@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://65a6c60674cf4207b4f0c864.mockapi.io';
+axios.defaults.baseURL = 'https://rentngobackend.onrender.com';
 
 const token = {
   set(token) {
@@ -12,12 +12,12 @@ const token = {
   },
 };
 
-export const register = createAsyncThunk(
-  'users/register',
+export const signup = createAsyncThunk(
+  'auth/signup',
 
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.post('/users/signup', credentials);
+      const { data } = await axios.post('/auth/signup', credentials);
       // При успішному запиті повертаємо проміс із даними
       token.set(data.token);
       return data;
@@ -29,11 +29,11 @@ export const register = createAsyncThunk(
   }
 );
 
-export const login = createAsyncThunk(
-  'users/login',
+export const signin = createAsyncThunk(
+  'auth/signin',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.post('/users/signin', credentials);
+      const { data } = await axios.post('/auth/signin', credentials);
       // При успішному запиті повертаємо проміс із даними
       return data;
     } catch (e) {

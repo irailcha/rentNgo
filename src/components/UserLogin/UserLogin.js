@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { login } from '../../redux/Auth/operations';
+import { signin } from '../../redux/Auth/operations';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -15,8 +15,8 @@ export const UserLogin = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleSubmit = value => {
-    dispatch(login({ field: 'email', value: value.email }));
-    dispatch(login({ field: 'password', value: value.password }));
+    dispatch(signin({ field: 'email', value: value.email }));
+    dispatch(signin({ field: 'password', value: value.password }));
     navigate('/', { replace: true });
     console.log(value);
   };

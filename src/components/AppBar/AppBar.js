@@ -40,10 +40,10 @@ export const AppBar = () => {
       ) : (
         <NavContainer>
           <LinksStyle>
-            <NavLinkPage to="/login">
+            <NavLinkPage to="auth/signin">
               <FiUserCheck /> Sign in
             </NavLinkPage>
-            <NavLinkPage to="/register">
+            <NavLinkPage to="auth//signup">
               <FiUserPlus /> Sign up
             </NavLinkPage>
           </LinksStyle>

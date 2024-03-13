@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://65a6c60674cf4207b4f0c864.mockapi.io';
+axios.defaults.baseURL = 'https://rentngobackend.onrender.com';
 
 export const fetchAdverts = async (page = 1, limit = 12) => {
   const { data } = await axios.get(`/adverts?page=${page}&limit=${limit}`);

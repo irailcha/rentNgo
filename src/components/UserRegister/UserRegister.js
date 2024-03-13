@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { register } from '../../redux/Auth/operations';
+import { signup } from '../../redux/Auth/operations';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -18,7 +18,7 @@ export const UserRegister = () => {
 
   const handleSubmit = value => {
     dispatch(
-      register({
+      signup({
         name: value.name,
         email: value.email,
         password: value.password,

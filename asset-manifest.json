@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/rentNgo/static/css/main.f2db3b31.css",
-    "main.js": "/rentNgo/static/js/main.ea38ea9b.js",
+    "main.js": "/rentNgo/static/js/main.dfdf65f6.js",
     "static/css/309.9efaa58a.chunk.css": "/rentNgo/static/css/309.9efaa58a.chunk.css",
-    "static/js/309.b416706b.chunk.js": "/rentNgo/static/js/309.b416706b.chunk.js",
-    "static/js/303.5fbc2205.chunk.js": "/rentNgo/static/js/303.5fbc2205.chunk.js",
+    "static/js/309.2eabd1be.chunk.js": "/rentNgo/static/js/309.2eabd1be.chunk.js",
+    "static/js/303.09799d97.chunk.js": "/rentNgo/static/js/303.09799d97.chunk.js",
     "static/js/604.8926b718.chunk.js": "/rentNgo/static/js/604.8926b718.chunk.js",
     "static/js/922.b94b850b.chunk.js": "/rentNgo/static/js/922.b94b850b.chunk.js",
     "static/js/705.78f4bd52.chunk.js": "/rentNgo/static/js/705.78f4bd52.chunk.js",
@@ -12,10 +12,10 @@
     "index.html": "/rentNgo/index.html",
     "static/media/sprite.svg#sprite": "/rentNgo/static/media/sprite.58edc6c6ca04ce582d7f92e91d2b5221.svg",
     "main.f2db3b31.css.map": "/rentNgo/static/css/main.f2db3b31.css.map",
-    "main.ea38ea9b.js.map": "/rentNgo/static/js/main.ea38ea9b.js.map",
+    "main.dfdf65f6.js.map": "/rentNgo/static/js/main.dfdf65f6.js.map",
     "309.9efaa58a.chunk.css.map": "/rentNgo/static/css/309.9efaa58a.chunk.css.map",
-    "309.b416706b.chunk.js.map": "/rentNgo/static/js/309.b416706b.chunk.js.map",
-    "303.5fbc2205.chunk.js.map": "/rentNgo/static/js/303.5fbc2205.chunk.js.map",
+    "309.2eabd1be.chunk.js.map": "/rentNgo/static/js/309.2eabd1be.chunk.js.map",
+    "303.09799d97.chunk.js.map": "/rentNgo/static/js/303.09799d97.chunk.js.map",
     "604.8926b718.chunk.js.map": "/rentNgo/static/js/604.8926b718.chunk.js.map",
     "922.b94b850b.chunk.js.map": "/rentNgo/static/js/922.b94b850b.chunk.js.map",
     "705.78f4bd52.chunk.js.map": "/rentNgo/static/js/705.78f4bd52.chunk.js.map",
@@ -23,6 +23,6 @@
   },
   "entrypoints": [
     "static/css/main.f2db3b31.css",
-    "static/js/main.ea38ea9b.js"
+    "static/js/main.dfdf65f6.js"
   ]
 }

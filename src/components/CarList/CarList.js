@@ -1,30 +1,30 @@
 import React from 'react';
 import { CarCard } from '../CarCard/CarCard';
 
-import sprite from '../../images/sprite.svg#sprite';
+// import sprite from '../../images/sprite.svg#sprite';
 import {
   CardListStyle,
   CardItemStyle,
-  ButtonFavoriteStyle,
-  IconFavoriteStyle,
+  // ButtonFavoriteStyle,
+  // IconFavoriteStyle,
 } from './CarList.styled';
 
 export const CarList = ({
   visibleAdverts,
-  favoriteList,
-  changeFavoriteList,
+  // favoriteList,
+  // changeFavoriteList,
 }) => {
   return (
     <CardListStyle>
       {visibleAdverts.map(advert => (
-        <CardItemStyle key={advert.id}>
-          <ButtonFavoriteStyle onClick={() => changeFavoriteList(advert)}>
+        <CardItemStyle key={advert._id}>
+          {/* <ButtonFavoriteStyle onClick={() => changeFavoriteList(advert)}>
             <IconFavoriteStyle
-              isFavorite={favoriteList.some(item => item.id === advert.id)}
+            // isFavorite={favoriteList.some(item => item.id === advert._id)}
             >
               <use href={`${sprite}#icon-normal-1`}></use>
             </IconFavoriteStyle>
-          </ButtonFavoriteStyle>
+          </ButtonFavoriteStyle> */}
           <CarCard car={advert} />
         </CardItemStyle>
       ))}

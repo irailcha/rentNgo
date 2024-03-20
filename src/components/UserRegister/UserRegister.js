@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -13,19 +13,22 @@ import TextField from '@mui/material/TextField';
 import { ButtonStyle } from './UserRegister.style';
 
 export const UserRegister = () => {
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    password: '',
+  });
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleSubmit = value => {
-    dispatch(
-      signup({
-        name: value.name,
-        email: value.email,
-        password: value.password,
-      })
-    );
-    navigate('/', { replace: true });
-    console.log(value);
+  const handleChange = event => {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
+  };
+  const handleSubmit = event => {
+    event.preventDefault();
+    dispatch(signup(formData));
+    navigate('/auth/signin', { replace: true });
+    setFormData({ username: '', email: '', password: '' });
   };
 
   const defaultTheme = createTheme();
@@ -55,7 +58,15 @@ export const UserRegister = () => {
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <label htmlFor="name">Name</label>
-                <TextField fullWidth id="name" name="name" placeholder="Jane" />
+                <TextField
+                  fullWidth
+                  id="username"
+                  name="username"
+                  placeholder="Jane"
+                  value={formData.username}
+                  onChange={handleChange}
+                  required
+                />
               </Grid>
 
               <Grid item xs={12}>
@@ -66,6 +77,9 @@ export const UserRegister = () => {
                   name="email"
                   placeholder="@example.com"
                   type="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
                 />
               </Grid>
               <Grid item xs={12}>
@@ -75,6 +89,9 @@ export const UserRegister = () => {
                   id="password"
                   name="password"
                   type="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  required
                 />
               </Grid>
               <Grid item xs={12}>

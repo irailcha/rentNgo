@@ -1,5 +1,5 @@
-import { css } from "@emotion/react";
-import "modern-normalize/modern-normalize.css";
+import { css } from '@emotion/react';
+import 'modern-normalize/modern-normalize.css';
 
 export const globalStyles = css`
   * {
@@ -113,8 +113,8 @@ export const globalStyles = css`
 
   body {
     line-height: 1;
-   
-    font-family: "Manrope", sans-serif;
+
+    font-family: 'Manrope', sans-serif;
     background-color: #cdcdcd;
   }
 
@@ -132,7 +132,7 @@ export const globalStyles = css`
   blockquote:after,
   q:before,
   q:after {
-    content: "";
+    content: '';
     content: none;
   }
 
@@ -167,33 +167,6 @@ export const globalStyles = css`
     display: none;
   }
 
-  /* ========================= /Fonts ========================= */
-  @font-face {
-    font-family: "Manrope";
-    font-style: normal;
-    font-weight: 400;
-    src: local("Manrope Regular"), local("Manrope-Regular"),
-      url(https://fonts.gstatic.com/s/manrope/v5/JCWXJ-fmVT2JnUEYrZJH6kTbgVvFPGnzCh8Oisq-c2I.woff2)
-        format("woff2");
-  }
-
-  @font-face {
-    font-family: "Manrope";
-    font-style: normal;
-    font-weight: 500; /* Додайте 500 для стилю medium */
-    src: local("Manrope Medium"), local("Manrope-Medium"),
-      url(https://fonts.gstatic.com/s/manrope/v5/JCWXJ-fmVT2JnUEYrZJH6kTbgVvFPGnzCh8Oisq-c2I.woff2)
-        format("woff2");
-  }
-
-  @font-face {
-    font-family: "Manrope";
-    font-style: normal;
-    font-weight: 700;
-    src: local("Manrope Bold"), local("Manrope-Bold"),
-      url(https://fonts.gstatic.com/s/manrope/v5/JCWXJ-fmVT2JnUEYrZJH6kTbgVvFPGnzCh8Oisq-c2I.woff2)
-        format("woff2");
-  }
   /* ========================= Common styles ========================= */
 
   html {
@@ -204,7 +177,7 @@ export const globalStyles = css`
     display: block;
     width: 100%;
     border-radius: 12px;
-    
+
     height: auto;
   }
 `;

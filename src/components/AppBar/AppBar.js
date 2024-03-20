@@ -1,9 +1,9 @@
-import { useSelector } from 'react-redux';
 import { UserMenu } from '../UserMenu/UserMenu';
 import { FiUserCheck } from 'react-icons/fi';
 import { FiUserPlus } from 'react-icons/fi';
 import { SlHeart } from 'react-icons/sl';
-import { selectIsLoggedIn } from '../../redux/Auth/selectors';
+
+import { useAuth } from '../../hooks/useAuth';
 
 import {
   HeaderContainer,
@@ -14,7 +14,7 @@ import {
 } from './AppBar.style';
 
 export const AppBar = () => {
-  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const { isLoggedIn } = useAuth();
 
   return (
     <HeaderContainer>
@@ -35,6 +35,7 @@ export const AppBar = () => {
           <a href="example@example.com">example@example.com</a>
         </LinksStyle>
       </NavContainer>
+
       {isLoggedIn ? (
         <UserMenu />
       ) : (
@@ -43,7 +44,7 @@ export const AppBar = () => {
             <NavLinkPage to="auth/signin">
               <FiUserCheck /> Sign in
             </NavLinkPage>
-            <NavLinkPage to="auth//signup">
+            <NavLinkPage to="auth/signup">
               <FiUserPlus /> Sign up
             </NavLinkPage>
           </LinksStyle>

@@ -1,21 +1,22 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { selectUser } from '../../redux/Auth/selectors';
-import { logOut } from '../../redux/Auth/operations';
+
+import { signout } from '../../redux/Auth/operations';
+import { useAuth } from '../../hooks/useAuth';
 import { ImExit } from 'react-icons/im';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const name = useSelector(selectUser);
 
+  const { user } = useAuth();
   const handleSubmit = () => {
-    dispatch(logOut);
+    dispatch(signout());
     navigate('/', { replace: true });
   };
   return (
     <div>
-      Welcome, {name}{' '}
+      Welcome, {user}{' '}
       <button onClick={handleSubmit}>
         <ImExit />
       </button>

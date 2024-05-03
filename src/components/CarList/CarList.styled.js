@@ -25,7 +25,23 @@ export const IconFavoriteStyle = styled.svg`
   width: 18px;
   height: 18px;
   stroke: ${props => (props.isFavorite ? '#3470FF' : '#fff')};
-
   fill: ${props => (props.isFavorite ? '#3470FF' : 'transparent')};
+
   border: 1px solid transparent;
+`;
+export const ButtonStyle = styled.button`
+  display: block;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  background-color: transparent;
+  color: #3470ff;
+  text-align: center;
+  margin: 0 auto;
+
+  :hover {
+    color: #0b44cd;
+  }
 `;

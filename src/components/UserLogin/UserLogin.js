@@ -16,10 +16,8 @@ export const UserLogin = () => {
     email: '',
     password: '',
   });
-  // Отримуємо метод для переходу між сторінками
-  const dispatch = useDispatch();
 
-  // Отримуємо метод для переходу між сторінками
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleChange = event => {
@@ -30,10 +28,9 @@ export const UserLogin = () => {
     navigate('/', { replace: true });
     setFormData({ username: '', email: '', password: '' });
   };
-  // Створюємо тему для компонентів Material-UI
+
   const defaultTheme = createTheme();
 
-  // Повертаємо JSX, який буде відображений на сторінці
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
@@ -51,7 +48,6 @@ export const UserLogin = () => {
             Sign in
           </Typography>
 
-          {/* Форма для входу */}
           <Box
             component="form"
             noValidate
@@ -60,7 +56,6 @@ export const UserLogin = () => {
             autoComplete="true"
           >
             <Grid container spacing={2}>
-              {/* Поле для введення електронної пошти */}
               <Grid item xs={12}>
                 <label htmlFor="email">Email</label>
                 <TextField
@@ -73,7 +68,7 @@ export const UserLogin = () => {
                   onChange={handleChange}
                 />
               </Grid>
-              {/* Поле для введення пароля */}
+
               <Grid item xs={12}>
                 <label htmlFor="password">Password</label>
                 <TextField
@@ -85,15 +80,15 @@ export const UserLogin = () => {
                   onChange={handleChange}
                 />
               </Grid>
-              {/* Кнопка для відправлення форми */}
+
               <Grid item xs={12}>
                 <ButtonStyle type="submit">Sign in</ButtonStyle>
               </Grid>
-              {/* Посилання на сторінку реєстрації */}
+
               <Grid item xs={12}>
                 <AdditionalStyle>
                   <p>Don't have an account yet? </p>
-                  <NavLink to="auth/signup">Sign up</NavLink>
+                  <NavLink to="../../auth/signup">Sign up</NavLink>
                 </AdditionalStyle>
               </Grid>
             </Grid>

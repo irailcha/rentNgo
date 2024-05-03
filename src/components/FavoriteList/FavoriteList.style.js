@@ -28,10 +28,10 @@ export const IconFavoriteStyle = styled.svg`
   fill: ${props => (props.isFavorite ? '#3470FF' : 'transparent')};
   border: 1px solid transparent;
 `;
-export const TextStyle = styled.p`
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 30px;
-  text-align: center;
-  margin-bottom: 15px;
-`;
+// export const TextStyle = styled.p`
+//   font-weight: 700;
+//   font-size: 24px;
+//   line-height: 30px;
+//   text-align: center;
+//   margin-bottom: 15px;
+// `;

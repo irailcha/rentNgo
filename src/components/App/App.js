@@ -7,6 +7,7 @@ import { PrivateRoute } from '../PrivateRoute';
 import { RestrictedRoute } from '../RestrictedRoute';
 import { refreshUser } from '../../redux/Auth/operations';
 import { useAuth } from '../../hooks/useAuth';
+import { Loader } from '../helpers/Loader';
 
 // Ліниве завантаження компонентів
 const Home = lazy(() => import('../../pages/Home/Home'));
@@ -27,7 +28,9 @@ const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <p>...is refresh</p>
+    <div>
+      <Loader />
+    </div>
   ) : (
     <>
       <BodyContainer>
@@ -35,21 +38,20 @@ const App = () => {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="adverts" element={<Adverts />} />
-
             <Route
               path="adverts/favorite"
               element={
-                <PrivateRoute redirectTo="/signin" component={<Favorite />} />
+                <PrivateRoute
+                  redirectTo="../auth/signin"
+                  component={<Favorite />}
+                />
               }
             />
             <Route path="auth">
               <Route
                 path="signin"
                 element={
-                  <RestrictedRoute
-                    redirectTo="/adverts"
-                    component={<LoginPage />}
-                  />
+                  <RestrictedRoute redirectTo="/" component={<LoginPage />} />
                 }
               />
 
@@ -57,13 +59,14 @@ const App = () => {
                 path="signup"
                 element={
                   <RestrictedRoute
-                    redirectTo="/signin"
+                    redirectTo="/"
                     component={<RegisterPage />}
                   />
                 }
               />
             </Route>
             <Route path="*" element={<NotFound />} />
+            as
           </Route>
         </Routes>
       </BodyContainer>

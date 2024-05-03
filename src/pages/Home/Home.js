@@ -1,4 +1,4 @@
-import SwiperSlider from '../../components/SwiperSlider/SwiperSlider';
+import SwiperSlider from '../../components/SwiperSlider/SwiperSlider.js';
 import { Title } from './Home.style';
 const Home = () => {
   return (

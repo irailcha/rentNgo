@@ -1,8 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { signup, signin, signout, refreshUser } from './operations';
+import {
+  signup,
+  signin,
+  signout,
+  refreshUser,
+  addFavoriteAdvert,
+  deleteFavoriteAdvert,
+} from './operations';
 
 const initialState = {
-  user: { name: null, email: null },
+  user: { username: null, email: null },
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
@@ -24,7 +31,7 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
       })
       .addCase(signout.fulfilled, state => {
-        state.user = { name: null, email: null };
+        state.user = { username: null, email: null };
         state.token = null;
         state.isLoggedIn = false;
       })
@@ -39,6 +46,18 @@ const authSlice = createSlice({
       .addCase(refreshUser.rejected, state => {
         state.isRefreshing = false;
       });
+    // .addCase(addFavoriteAdvert.fulfilled, (state, action) => {
+    //   state.isLoading = false;
+    //   state.isError = null;
+    //   state.user.favoriteList.push(action.payload);
+    // })
+    // .addCase(deleteFavoriteAdvert.fulfilled, (state, action) => {
+    //   state.isLoading = false;
+    //   state.isError = null;
+    //   state.user.favoriteList = state.user.favoriteList.filter(
+    //     ad => ad.id !== action.payload
+    //   );
+    // });
   },
 });
 

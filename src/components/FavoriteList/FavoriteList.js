@@ -1,38 +1,31 @@
-// import React from 'react';
+// import React, { useEffect } from 'react';
+// import { useSelector, useDispatch } from 'react-redux';
 // import { CarCard } from '../CarCard/CarCard';
-// import {
-//   CardItemStyle,
-//   CardListStyle,
-//   ButtonFavoriteStyle,
-//   IconFavoriteStyle,
-//   TextStyle,
-// } from './FavoriteList.style';
-// import sprite from '../../images/sprite.svg#sprite';
-// export const FavoriteList = ({
-//   favoriteList,
-//   isFavorite,
-//   changeFavoriteList,
-// }) => {
+// import { fetchFavoriteList } from '../../redux/Auth/operations';
+// import { selectUser } from '../../redux/Auth/selectors';
+
+// export const FavoriteList = () => {
+//   const dispatch = useDispatch();
+//   const user = useSelector(selectUser);
+
+//   const favoriteList = user.favoriteList;
+//   useEffect(() => {
+//     dispatch(fetchFavoriteList());
+//   }, [dispatch]);
+
 //   return (
 //     <div>
-//       {favoriteList.length === 0 ? (
-//         <TextStyle>No favorite yet</TextStyle>
-//       ) : (
-//         <CardListStyle>
-//           {favoriteList.map(advert => (
-//             <CardItemStyle key={advert.id}>
-//               <ButtonFavoriteStyle onClick={() => changeFavoriteList(advert)}>
-//                 <IconFavoriteStyle
-//                   isFavorite={favoriteList.some(item => item.id === advert.id)}
-//                 >
-//                   <use href={`${sprite}#icon-normal-1`}></use>
-//                 </IconFavoriteStyle>
-//               </ButtonFavoriteStyle>
-//               {<CarCard car={advert} />}
-//             </CardItemStyle>
-//           ))}
-//         </CardListStyle>
-//       )}
+//       {favoriteList &&
+//         Array.isArray(favoriteList) &&
+//         favoriteList.map(item => <li key={item._id}>{item._id}</li>)}
 //     </div>
 //   );
 // };
+
+export const FavoriteList = () => {
+  return (
+    <>
+      <p>There will be your favorite adverts</p>
+    </>
+  );
+};

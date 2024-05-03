@@ -17,6 +17,7 @@ export const Loader = () => {
     <div style={wrapperStyle}>
       <RotatingLines
         visible={true}
+        strokeColor=" #3470ff"
         height="150"
         width="150"
         strokeWidth="5"

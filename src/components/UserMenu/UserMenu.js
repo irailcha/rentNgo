@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { signout } from '../../redux/Auth/operations';
 import { useAuth } from '../../hooks/useAuth';
-import { ImExit } from 'react-icons/im';
+import { Icon } from './UserMenu.style';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
@@ -16,9 +16,9 @@ export const UserMenu = () => {
   };
   return (
     <div>
-      Welcome, {user}{' '}
+      Welcome, {user.username}{' '}
       <button onClick={handleSubmit}>
-        <ImExit />
+        <Icon />
       </button>
     </div>
   );

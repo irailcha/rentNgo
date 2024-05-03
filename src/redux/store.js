@@ -1,17 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 import {
-  persistStore,
-  persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
   PERSIST,
   PURGE,
   REGISTER,
-} from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+} from 'redux-persist/es/constants';
 
-import { authReducer } from './Auth/userSlice';
+import { authReducer } from './Auth/userSlice.js';
+import { advertReducer } from './Ads/advertSlice.js';
 
 // Persisting token field from auth slice to localstorage
 const authPersistConfig = {
@@ -20,9 +20,15 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
+const advertPersistConfig = {
+  key: 'ads',
+  storage,
+};
+
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
+    ads: persistReducer(advertPersistConfig, advertReducer),
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

@@ -1,10 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Navigation, Pagination, A11y } from 'swiper/modules';
 import { Virtual } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { fetchCarImages } from '../../Api';
+import { fetchCarImages } from '../../redux/Ads/operations.js';
 import { SwiperThumb, ImageStyle } from './SwiperSlider.style';
 import { Loader } from '../helpers/Loader';
+import {
+  selectIsError,
+  selectCarImages,
+  selectIsLoading,
+} from '../../redux/Ads/selectors.js';
 // Import Swiper styles
 import 'swiper/css';
 
@@ -12,30 +18,18 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 const SwiperSlider = () => {
-  const [images, setImages] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const dispatch = useDispatch();
+  const images = useSelector(selectCarImages);
+  const error = useSelector(selectIsError);
+  const loading = useSelector(selectIsLoading);
+
   useEffect(() => {
-    async function getImages() {
-      setIsLoading(true);
-      setIsError(false);
-      try {
-        const result = await fetchCarImages();
-
-        setImages(result);
-      } catch (error) {
-        setIsError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    getImages();
-  }, []);
+    dispatch(fetchCarImages());
+  }, [dispatch]);
 
   return (
     <div>
-      {isLoading && !isError && <Loader />}
+      {loading && !error && <Loader />}
       <Swiper
         modules={[Virtual, Navigation, Pagination, A11y]}
         spaceBetween={10}
@@ -45,13 +39,15 @@ const SwiperSlider = () => {
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
       >
-        {images.map((img, index) => (
-          <SwiperThumb key={index}>
-            <SwiperSlide virtualIndex={index}>
-              <ImageStyle src={img} alt={`Car Image ${index}`} />
-            </SwiperSlide>
-          </SwiperThumb>
-        ))}
+        {images &&
+          Array.isArray(images) &&
+          images.map((img, index) => (
+            <SwiperThumb key={index}>
+              <SwiperSlide virtualIndex={index}>
+                <ImageStyle src={img} alt={`Car Image ${index}`} />
+              </SwiperSlide>
+            </SwiperThumb>
+          ))}
       </Swiper>
     </div>
   );

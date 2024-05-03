@@ -82,3 +82,46 @@ export const refreshUser = createAsyncThunk(
     }
   }
 );
+
+export const addFavoriteAdvert = createAsyncThunk(
+  '/favorite/add',
+  async (advertId, thunkAPI) => {
+    try {
+      const { data } = await axios.patch(`/adverts/${advertId}/addFavorite`);
+      setAuthHeader(data.token);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const deleteFavoriteAdvert = createAsyncThunk(
+  '/favorite/delete',
+  async (advertId, thunkAPI) => {
+    try {
+      const { data } = await axios.patch(`/adverts/${advertId}/deleteFavorite`);
+      setAuthHeader(data.token);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchFavoriteList = createAsyncThunk(
+  'auth/fetchFavoriteList',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await axios.get(`/auth/current`);
+      const favoriteList = data.favoriteList;
+      const unique = Array.from(new Set(favoriteList));
+
+      return unique;
+      // При успішному запиті повертаємо проміс із даними
+    } catch (e) {
+      // При помилці запиту повертаємо проміс
+      // який буде відхилений з текстом помилки
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);

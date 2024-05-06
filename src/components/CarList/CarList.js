@@ -21,39 +21,32 @@ export const CarList = () => {
   const error = useSelector(selectIsError);
   const loading = useSelector(selectIsLoading);
   const adverts = useSelector(selectAdverts);
+  const [page, _] = useState(1);
   const [isLoadMoreHidden, setIsLoadMoreHidden] = useState(true);
-  const [page, setPage] = useState(1);
-  const [make, setMake] = useState('');
-  const [filteredAdverts, setFilteredAdverts] = useState([]);
+  const [advertsList, setAdvertsList] = useState([]);
 
   useEffect(() => {
-    async function getAdverts() {
-      try {
-        await dispatch(fetchAdverts(page));
-        setIsLoadMoreHidden(false);
-        if (adverts.length < 12) {
-          setIsLoadMoreHidden(true);
-        }
-      } catch (error) {
-        // Обробка помилки
-      }
-    }
-    getAdverts();
+    dispatch(fetchAdverts({ page }));
+    setIsLoadMoreHidden(false);
   }, [page, dispatch]);
 
-  // useEffect(() => {
-  //   setFilteredAdverts(adverts.filter(advert => advert.make === make));
-  // }, [adverts, make]);
-
   const loadMore = () => {
-    setPage(prevPage => prevPage + 1);
+    const nextPage = page + 1;
+    dispatch(fetchAdverts({ page: nextPage }));
+    if (adverts.length <= 12) {
+      setIsLoadMoreHidden(true);
+    }
   };
+
+  useEffect(() => {
+    setAdvertsList([...advertsList, ...adverts]);
+  }, [adverts]);
 
   return (
     <div>
       <CardListStyle>
         {loading && !error}
-        {adverts.map(advert => (
+        {advertsList.map(advert => (
           <CardItemStyle key={advert._id}>
             <ButtonFavoriteStyle>
               <IconFavoriteStyle>

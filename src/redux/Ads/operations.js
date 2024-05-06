@@ -3,10 +3,10 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://rentngobackend.onrender.com';
 
-// Utility to add JWT
-const setAuthHeader = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
+// // Utility to add JWT
+// const setAuthHeader = token => {
+//   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+// };
 
 export const fetchAdverts = createAsyncThunk(
   'ads/fetchAdverts',
@@ -43,28 +43,28 @@ export const fetchCarImages = createAsyncThunk(
   }
 );
 
-export const addFavoriteAds = createAsyncThunk(
-  'ads/addFavoriteAds',
-  async (advertId, thunkAPI) => {
-    try {
-      const { data } = await axios.patch(`/adverts/${advertId}/addFavorite`);
-      setAuthHeader(data.token);
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
+// export const addFavoriteAds = createAsyncThunk(
+//   'ads/addFavoriteAds',
+//   async (advertId, thunkAPI) => {
+//     try {
+//       const { data } = await axios.patch(`/adverts/${advertId}/addFavorite`);
+//       setAuthHeader(data.token);
+//       return data;
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );
 
-export const deleteFavoriteAds = createAsyncThunk(
-  'ads/deleteFavoriteAds',
-  async (advertId, thunkAPI) => {
-    try {
-      const { data } = await axios.patch(`/adverts/${advertId}/deleteFavorite`);
-      setAuthHeader(data.token);
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
+// export const deleteFavoriteAds = createAsyncThunk(
+//   'ads/deleteFavoriteAds',
+//   async (advertId, thunkAPI) => {
+//     try {
+//       const { data } = await axios.patch(`/adverts/${advertId}/deleteFavorite`);
+//       setAuthHeader(data.token);
+//       return data;
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );

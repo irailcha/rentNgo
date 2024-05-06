@@ -6,6 +6,7 @@ const initialState = {
   carImages: [],
   isLoading: false,
   isError: null,
+  page: 1,
 };
 
 const advertSlice = createSlice({
@@ -17,6 +18,7 @@ const advertSlice = createSlice({
       state.isLoading = false;
       state.isError = null;
       state.adverts = action.payload;
+      state.page = action.meta.arg.page;
     });
     builder.addCase(fetchCarImages.fulfilled, (state, action) => {
       state.isLoading = false;

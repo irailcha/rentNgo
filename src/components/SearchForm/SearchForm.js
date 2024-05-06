@@ -1,54 +1,52 @@
-import React from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { Formik } from 'formik';
-import {
-  LabelStyleForm,
-  FormStyle,
-  ButtonStyle,
-  FieldStyleMark,
-} from './SearchForm.styled';
+// import React from 'react';
+// import { useSearchParams } from 'react-router-dom';
+// import { Formik } from 'formik';
+// import {
+//   LabelStyleForm,
+//   FormStyle,
+//   ButtonStyle,
+//   FieldStyleMark,
+// } from './SearchForm.styled';
 
-export const SearchForm = ({ setMake }) => {
-  const [searchParams, setSearchParams] = useSearchParams();
+// export const SearchForm = ({ setMake }) => {
+//   const [searchParams, setSearchParams] = useSearchParams();
 
-  const make = searchParams.get('make') ?? '';
+//   const make = searchParams.get('make') ?? '';
 
-  const updateQueryString = (field, value) => {
-    setSearchParams({ ...searchParams, [field]: value });
-  };
+//   const updateQueryString = value => {
+//     setSearchParams({ make: value });
+//   };
 
-  return (
-    <div>
-      <Formik
-        initialValues={{
-          make,
-        }}
-        onSubmit={values => {
-          setSearchParams(values);
-          setMake(values.make);
-        }}
-      >
-        {({ values, handleChange, handleSubmit }) => (
-          <FormStyle autoComplete="off">
-            <LabelStyleForm htmlFor="make">
-              Car brand
-              <FieldStyleMark
-                type="string"
-                name="make"
-                placeholder="Enter the text"
-                onChange={e => {
-                  handleChange(e);
-                  updateQueryString('make', e.target.value);
-                }}
-                value={values.make}
-              />
-            </LabelStyleForm>
-            <ButtonStyle type="submit" onClick={handleSubmit}>
-              Search
-            </ButtonStyle>
-          </FormStyle>
-        )}
-      </Formik>
-    </div>
-  );
-};
+//   return (
+//     <div>
+//       <Formik
+//         initialValues={{
+//           make,
+//         }}
+//         onSubmit={() => {}}
+//       >
+//         {({ values, handleChange }) => (
+//           <FormStyle autoComplete="off">
+//             <LabelStyleForm htmlFor="make">
+//               Car brand
+//               <FieldStyleMark
+//                 type="string"
+//                 name="make"
+//                 placeholder="Enter the text"
+//                 onChange={e => {
+//                   const inputValue = e.target.value;
+//                   handleChange(e);
+//                   updateQueryString(inputValue);
+//                   setMake(inputValue);
+//                 }}
+//                 value={values.make}
+//               />
+//             </LabelStyleForm>
+//             {/* Optionally, you can add a submit button if needed */}
+//             <ButtonStyle type="submit">Search</ButtonStyle>
+//           </FormStyle>
+//         )}
+//       </Formik>
+//     </div>
+//   );
+// };

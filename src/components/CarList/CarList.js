@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CarCard } from '../CarCard/CarCard';
 import sprite from '../../images/sprite.svg#sprite';
@@ -21,9 +21,9 @@ export const CarList = () => {
   const error = useSelector(selectIsError);
   const loading = useSelector(selectIsLoading);
   const adverts = useSelector(selectAdverts);
-  const [page] = useState(1);
+  const [page, _] = useState(1);
   const [isLoadMoreHidden, setIsLoadMoreHidden] = useState(true);
-  const [advertsList] = useState([]);
+  const [advertsList, setAdvertsList] = useState([]);
 
   useEffect(() => {
     dispatch(fetchAdverts(page));
@@ -38,15 +38,16 @@ export const CarList = () => {
     }
   };
 
-  const optimizedAdvertsList = useMemo(() => {
-    return [...advertsList, ...adverts];
-  }, [adverts, advertsList]);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    setAdvertsList([...advertsList, ...adverts]);
+  }, [adverts]);
 
   return (
     <div>
       <CardListStyle>
         {loading && !error}
-        {optimizedAdvertsList.map(advert => (
+        {advertsList.map(advert => (
           <CardItemStyle key={advert._id}>
             <ButtonFavoriteStyle>
               <IconFavoriteStyle>

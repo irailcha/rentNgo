@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CarCard } from '../CarCard/CarCard';
 import sprite from '../../images/sprite.svg#sprite';
@@ -21,12 +21,12 @@ export const CarList = () => {
   const error = useSelector(selectIsError);
   const loading = useSelector(selectIsLoading);
   const adverts = useSelector(selectAdverts);
-  const [page, _] = useState(1);
+  const [page] = useState(1);
   const [isLoadMoreHidden, setIsLoadMoreHidden] = useState(true);
-  const [advertsList, setAdvertsList] = useState([]);
+  const [advertsList] = useState([]);
 
   useEffect(() => {
-    dispatch(fetchAdverts({ page }));
+    dispatch(fetchAdverts(page));
     setIsLoadMoreHidden(false);
   }, [page, dispatch]);
 
@@ -38,15 +38,15 @@ export const CarList = () => {
     }
   };
 
-  useEffect(() => {
-    setAdvertsList([...advertsList, ...adverts]);
-  }, [adverts]);
+  const optimizedAdvertsList = useMemo(() => {
+    return [...advertsList, ...adverts];
+  }, [adverts, advertsList]);
 
   return (
     <div>
       <CardListStyle>
         {loading && !error}
-        {advertsList.map(advert => (
+        {optimizedAdvertsList.map(advert => (
           <CardItemStyle key={advert._id}>
             <ButtonFavoriteStyle>
               <IconFavoriteStyle>

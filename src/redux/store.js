@@ -12,6 +12,7 @@ import {
 
 import { authReducer } from './Auth/userSlice.js';
 import { advertReducer } from './Ads/advertSlice.js';
+import { filterReducer } from './Ads/filterSlice';
 
 // Persisting token field from auth slice to localstorage
 const authPersistConfig = {
@@ -28,7 +29,7 @@ const advertPersistConfig = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    ads: persistReducer(advertPersistConfig, advertReducer),
+    ads: persistReducer(advertPersistConfig, advertReducer, filterReducer),
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

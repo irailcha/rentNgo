@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { signup, signin, signout, refreshUser } from './operations';
-
+// import { addFavoriteAdvert, deleteFavoriteAdvert } from './operations';
 const initialState = {
-  user: { username: null, email: null },
+  user: { username: null, email: null, favoriteList: [] },
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
@@ -42,7 +42,14 @@ const authSlice = createSlice({
     // .addCase(addFavoriteAdvert.fulfilled, (state, action) => {
     //   state.isLoading = false;
     //   state.isError = null;
-    //   state.user.favoriteList.push(action.payload);
+    //   if (Array.isArray(state.user.favoriteList)) {
+    //     state.user.favoriteList = [
+    //       ...state.user.favoriteList,
+    //       ...action.payload,
+    //     ];
+    //   } else {
+    //     state.user.favoriteList = action.payload;
+    //   }
     // })
     // .addCase(deleteFavoriteAdvert.fulfilled, (state, action) => {
     //   state.isLoading = false;

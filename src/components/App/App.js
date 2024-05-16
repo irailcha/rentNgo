@@ -17,7 +17,7 @@ const LoginPage = lazy(() => import('../../pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() =>
   import('../../pages/RegisterPage/RegisterPage')
 );
-const NotFound = lazy(() => import('../../pages/NotFound'));
+const ErrorPage = lazy(() => import('../../pages/ErrorPage'));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -32,45 +32,39 @@ const App = () => {
       <Loader />
     </div>
   ) : (
-    <>
-      <BodyContainer>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="adverts" element={<Adverts />} />
+    <BodyContainer>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="adverts" element={<Adverts />} />
+          <Route
+            path="adverts/favorite"
+            element={
+              <PrivateRoute
+                redirectTo="../auth/signin"
+                component={<Favorite />}
+              />
+            }
+          />
+          <Route path="auth">
             <Route
-              path="adverts/favorite"
+              path="signin"
               element={
-                <PrivateRoute
-                  redirectTo="../auth/signin"
-                  component={<Favorite />}
-                />
+                <RestrictedRoute redirectTo="/" component={<LoginPage />} />
               }
             />
-            <Route path="auth">
-              <Route
-                path="signin"
-                element={
-                  <RestrictedRoute redirectTo="/" component={<LoginPage />} />
-                }
-              />
 
-              <Route
-                path="signup"
-                element={
-                  <RestrictedRoute
-                    redirectTo="/"
-                    component={<RegisterPage />}
-                  />
-                }
-              />
-            </Route>
-            <Route path="*" element={<NotFound />} />
-            as
+            <Route
+              path="signup"
+              element={
+                <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
+              }
+            />
           </Route>
-        </Routes>
-      </BodyContainer>
-    </>
+          <Route path="*" element={<ErrorPage />} />
+        </Route>
+      </Routes>
+    </BodyContainer>
   );
 };
 

@@ -1,31 +1,47 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchAdverts, fetchCarImages } from './operations';
+import { fetchAdverts, fetchCarImages, fetchCarBrands } from './operations';
 
 const initialState = {
   adverts: [],
   carImages: [],
+  carBrands: [],
+  error: null,
   isLoading: false,
-  isError: null,
-  page: 1,
 };
 
-const advertSlice = createSlice({
+export const advertSlice = createSlice({
   name: 'ads',
   initialState,
-  reducers: {},
+
   extraReducers: builder => {
-    builder.addCase(fetchAdverts.fulfilled, (state, action) => {
-      state.isLoading = false;
-      state.isError = null;
-      state.adverts = action.payload;
-      state.page = action.meta.arg.page;
-    });
-    builder.addCase(fetchCarImages.fulfilled, (state, action) => {
-      state.isLoading = false;
-      state.isError = null;
-      state.carImages = action.payload;
-    });
+    builder
+      .addCase(fetchAdverts.fulfilled, (state, action) => {
+        state.adverts = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(fetchAdverts.rejected, (state, action) => {
+        state.error = action.error.message;
+        state.isLoading = false;
+      })
+      .addCase(fetchCarImages.fulfilled, (state, action) => {
+        state.carImages = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(fetchCarImages.rejected, (state, action) => {
+        state.error = action.error.message;
+        state.isLoading = false;
+      })
+      .addCase(fetchCarBrands.fulfilled, (state, action) => {
+        state.carBrand = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(fetchCarBrands.rejected, (state, action) => {
+        state.error = action.error.message;
+        state.isLoading = false;
+      });
   },
 });
+
+export const { setCarBrand } = advertSlice.actions;
 
 export const advertReducer = advertSlice.reducer;

@@ -7,7 +7,7 @@ import { fetchCarImages } from '../../redux/Ads/operations.js';
 import { SwiperThumb, ImageStyle } from './SwiperSlider.style';
 import { Loader } from '../helpers/Loader';
 import {
-  selectIsError,
+  selectError,
   selectCarImages,
   selectIsLoading,
 } from '../../redux/Ads/selectors.js';
@@ -20,8 +20,8 @@ import 'swiper/css/pagination';
 const SwiperSlider = () => {
   const dispatch = useDispatch();
   const images = useSelector(selectCarImages);
-  const error = useSelector(selectIsError);
-  const loading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+  const isLoading = useSelector(selectIsLoading);
 
   useEffect(() => {
     dispatch(fetchCarImages());
@@ -29,7 +29,7 @@ const SwiperSlider = () => {
 
   return (
     <div>
-      {loading && !error && <Loader />}
+      {isLoading && !error && <Loader />}
       <Swiper
         modules={[Virtual, Navigation, Pagination, A11y]}
         spaceBetween={10}

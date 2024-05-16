@@ -18,8 +18,9 @@ export const AppBar = () => {
 
   return (
     <HeaderContainer>
-      <LogoLinkStyle to="/">Rent-n-go</LogoLinkStyle>
-
+      <nav>
+        <LogoLinkStyle to="/rentNgo">Rent-n-go</LogoLinkStyle>
+      </nav>
       <NavContainer>
         <NavLinkPage to="/">Home</NavLinkPage>
         <NavLinkPage to="/adverts">Adverts</NavLinkPage>

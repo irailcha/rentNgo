@@ -16,11 +16,11 @@ export const fetchAdverts = createAsyncThunk(
       const { data } = await axios.get(`/adverts?page=${page}&limit=${limit}`);
 
       return data;
-    } catch (e) {
-      console.error('Adverts failed:', e.message);
+    } catch (error) {
+      console.error('Adverts failed:', error.message);
       // При помилці запиту повертаємо проміс
       // який буде відхилений з текстом помилки
-      return thunkAPI.rejectWithValue(e.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -30,41 +30,33 @@ export const fetchCarImages = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await axios.get(`/adverts`);
-      const Images = data.map(advert => advert.img);
-      const unique = Array.from(new Set(Images));
+      const images = data.map(advert => advert.img);
+      const unique = Array.from(new Set(images));
 
       return unique;
       // При успішному запиті повертаємо проміс із даними
-    } catch (e) {
+    } catch (error) {
       // При помилці запиту повертаємо проміс
       // який буде відхилений з текстом помилки
-      return thunkAPI.rejectWithValue(e.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-// export const addFavoriteAds = createAsyncThunk(
-//   'ads/addFavoriteAds',
-//   async (advertId, thunkAPI) => {
-//     try {
-//       const { data } = await axios.patch(`/adverts/${advertId}/addFavorite`);
-//       setAuthHeader(data.token);
-//       return data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
+export const fetchCarBrands = createAsyncThunk(
+  'ads/fetchCarBrands',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await axios.get(`/adverts`);
+      const brands = data.map(advert => advert.make);
+      const unique = Array.from(new Set(brands));
 
-// export const deleteFavoriteAds = createAsyncThunk(
-//   'ads/deleteFavoriteAds',
-//   async (advertId, thunkAPI) => {
-//     try {
-//       const { data } = await axios.patch(`/adverts/${advertId}/deleteFavorite`);
-//       setAuthHeader(data.token);
-//       return data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
+      return unique;
+      // При успішному запиті повертаємо проміс із даними
+    } catch (error) {
+      // При помилці запиту повертаємо проміс
+      // який буде відхилений з текстом помилки
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

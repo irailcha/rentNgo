@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { CarCard } from '../../components/CarCard/CarCard';
-import sprite from '../../images/sprite.svg#sprite';
-import {
-  CardListStyle,
-  CardItemStyle,
-  ButtonFavoriteStyle,
-  IconFavoriteStyle,
-} from '../../components/CarList/CarList.styled';
+import { CarList } from '../../components/CarList/CarList';
+
 import { fetchAdverts } from '../../redux/Ads/operations';
 import { Loader } from '../../components/helpers/Loader';
 import { selectIsLoading, selectAdverts } from '../../redux/Ads/selectors';
-import { ButtonStyle } from './Adverts.style';
+import { ButtonStyle, ButtonUpPage } from './Adverts.style';
 import { SearchForm } from 'components/SearchForm/SearchForm';
+import { GoArrowUp } from 'react-icons/go';
 
 const Adverts = () => {
   const dispatch = useDispatch();
@@ -23,18 +18,8 @@ const Adverts = () => {
   const [loadedAdverts, setLoadedAdverts] = useState([]);
 
   useEffect(() => {
-    if (page > 1) {
-      dispatch(fetchAdverts({ page, limit: 12 }));
-    }
+    dispatch(fetchAdverts({ page, limit: 12 }));
   }, [dispatch, page]);
-
-  useEffect(() => {
-    if (adverts.length < 12) {
-      setIsLoadMoreHidden(true);
-    } else {
-      setIsLoadMoreHidden(false);
-    }
-  }, [adverts]);
 
   const loadMore = () => {
     if (isLoading) return;
@@ -43,30 +28,39 @@ const Adverts = () => {
 
   useEffect(() => {
     setLoadedAdverts(prevAdverts => [...prevAdverts, ...adverts]);
+    if (adverts.length < 12) {
+      setIsLoadMoreHidden(true);
+    } else {
+      setIsLoadMoreHidden(false);
+    }
   }, [adverts]);
 
+  useEffect(() => {
+    // Збереження оголошень в localStorage
+    localStorage.setItem('loadedAdverts', JSON.stringify(loadedAdverts));
+  }, [loadedAdverts]);
+
+  useEffect(() => {
+    // Завантаження оголошень з localStorage при першому рендерингу
+    const savedAdverts = localStorage.getItem('loadedAdverts');
+    if (savedAdverts) {
+      setLoadedAdverts(JSON.parse(savedAdverts));
+    }
+  }, []);
+
   return (
-    <div>
+    <div style={{ position: 'relative', height: 'auto' }}>
       <SearchForm />
       {isLoading && <Loader />}
+      <CarList adverts={loadedAdverts} />
 
-      <CardListStyle>
-        {loadedAdverts.map(advert => (
-          <CardItemStyle key={advert._id}>
-            <ButtonFavoriteStyle
-              onClick={() => console.log('Зміна улюбленого оголошення')}
-            >
-              <IconFavoriteStyle>
-                <use href={`${sprite}#icon-normal-1`}></use>
-              </IconFavoriteStyle>
-            </ButtonFavoriteStyle>
-            <CarCard car={advert} />
-          </CardItemStyle>
-        ))}
-      </CardListStyle>
       {!isLoadMoreHidden && (
         <ButtonStyle onClick={loadMore}>Load More</ButtonStyle>
       )}
+
+      <ButtonUpPage onClick={() => window.scrollTo(0, 0)}>
+        <GoArrowUp />
+      </ButtonUpPage>
     </div>
   );
 };

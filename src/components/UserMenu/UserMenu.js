@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { signout } from '../../redux/Auth/operations';
 import { useAuth } from '../../hooks/useAuth';
-import { Icon } from './UserMenu.style';
+import { GoMoveToEnd } from 'react-icons/go';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
@@ -16,9 +16,9 @@ export const UserMenu = () => {
   };
   return (
     <div>
-      Welcome, {user.username}{' '}
+      Welcome,{user.username}{' '}
       <button onClick={handleSubmit}>
-        <Icon />
+        <GoMoveToEnd />
       </button>
     </div>
   );

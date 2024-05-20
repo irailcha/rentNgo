@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import {
@@ -26,11 +26,19 @@ const advertPersistConfig = {
   storage,
 };
 
+const rootReducer = combineReducers({
+  auth: persistReducer(authPersistConfig, authReducer),
+  ads: persistReducer(advertPersistConfig, advertReducer),
+  filters: filterReducer,
+});
+
+const persistedReducer = persistReducer(
+  { key: 'root', storage, whitelist: ['auth', 'ads'] },
+  rootReducer
+);
+
 export const store = configureStore({
-  reducer: {
-    auth: persistReducer(authPersistConfig, authReducer),
-    ads: persistReducer(advertPersistConfig, advertReducer, filterReducer),
-  },
+  reducer: persistedReducer,
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {

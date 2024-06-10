@@ -16,7 +16,7 @@ export const UserMenu = () => {
   };
   return (
     <div>
-      Welcome,{user.username}{' '}
+      {user.username}{' '}
       <button onClick={handleSubmit}>
         <GoMoveToEnd />
       </button>

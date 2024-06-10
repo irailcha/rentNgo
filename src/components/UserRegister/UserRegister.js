@@ -27,7 +27,7 @@ export const UserRegister = () => {
   const handleSubmit = event => {
     event.preventDefault();
     dispatch(signup(formData));
-    navigate('/auth/signin', { replace: true });
+    navigate('/', { replace: true });
     setFormData({ username: '', email: '', password: '' });
   };
 

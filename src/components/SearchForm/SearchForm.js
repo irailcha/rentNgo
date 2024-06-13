@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
-import { FormStyle, FieldStyleMark, ButtonStyle } from './SearchForm.styled';
+import { FormStyle, ButtonStyle } from './SearchForm.styled';
 import { fetchCarBrands } from '../../redux/Ads/operations';
 import { selectCarBrands } from '../../redux/Ads/selectors';
 
@@ -20,7 +20,7 @@ export const SearchForm = ({ onSubmit }) => {
         onSubmit(values);
       }}
     >
-      {({ handleChange, setFieldValue }) => (
+      {({ setFieldValue }) => (
         <FormStyle id="search-form" role="search">
           {marks.length > 0 && (
             <select

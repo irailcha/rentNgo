@@ -1,31 +1,31 @@
-// import React, { useEffect } from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { CarCard } from '../CarCard/CarCard';
-// import { fetchFavoriteList } from '../../redux/Auth/operations';
-// import { selectUser } from '../../redux/Auth/selectors';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import {
+  addFavoriteAdvert,
+  deleteFavoriteAdvert,
+} from '../../redux/Auth/operations';
+import sprite from '../../images/sprite.svg#sprite';
+import { ButtonFavoriteStyle, IconFavoriteStyle } from './FavoriteList.style';
 
-// export const FavoriteList = () => {
-//   const dispatch = useDispatch();
-//   const user = useSelector(selectUser);
+export const FavoriteList = ({ advert }) => {
+  const dispatch = useDispatch();
 
-//   const favoriteList = user.favoriteList;
-//   useEffect(() => {
-//     dispatch(fetchFavoriteList());
-//   }, [dispatch]);
+  const [isFavorite, setIsFavorite] = useState(false);
 
-//   return (
-//     <div>
-//       {favoriteList &&
-//         Array.isArray(favoriteList) &&
-//         favoriteList.map(item => <li key={item._id}>{item._id}</li>)}
-//     </div>
-//   );
-// };
+  const handleChangeFavoriteAds = () => {
+    if (isFavorite) {
+      dispatch(deleteFavoriteAdvert(advert._id));
+    } else {
+      dispatch(addFavoriteAdvert(advert._id));
+    }
+    setIsFavorite(!isFavorite);
+  };
 
-export const FavoriteList = () => {
   return (
-    <>
-      <p>There will be your favorite adverts</p>
-    </>
+    <ButtonFavoriteStyle onClick={handleChangeFavoriteAds}>
+      <IconFavoriteStyle isFavorite={isFavorite}>
+        <use href={`${sprite}#icon-normal-1`}></use>
+      </IconFavoriteStyle>
+    </ButtonFavoriteStyle>
   );
 };

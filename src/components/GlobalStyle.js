@@ -113,7 +113,6 @@ export const globalStyles = css`
 
   body {
     line-height: 1;
-
     font-family: 'Manrope', sans-serif;
     background-color: #cdcdcd;
   }

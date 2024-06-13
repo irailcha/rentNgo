@@ -1,11 +1,6 @@
-import sprite from '../../images/sprite.svg#sprite';
 import { CarCard } from '../CarCard/CarCard';
-import {
-  CardListStyle,
-  CardItemStyle,
-  ButtonFavoriteStyle,
-  IconFavoriteStyle,
-} from './CarList.styled';
+import { FavoriteList } from '../FavoriteList/FavoriteList';
+import { CardListStyle, CardItemStyle } from './CarList.styled';
 
 export const CarList = ({ adverts }) => {
   return (
@@ -13,13 +8,7 @@ export const CarList = ({ adverts }) => {
       <CardListStyle>
         {adverts.map(advert => (
           <CardItemStyle key={advert._id}>
-            <ButtonFavoriteStyle
-              onClick={() => console.log('Зміна улюбленого оголошення')}
-            >
-              <IconFavoriteStyle>
-                <use href={`${sprite}#icon-normal-1`}></use>
-              </IconFavoriteStyle>
-            </ButtonFavoriteStyle>
+            <FavoriteList advert={advert} />
             <CarCard car={advert} />
           </CardItemStyle>
         ))}

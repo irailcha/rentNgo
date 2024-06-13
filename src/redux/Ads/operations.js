@@ -10,21 +10,17 @@ axios.defaults.baseURL = 'https://rentngobackend.onrender.com';
 
 export const fetchAdverts = createAsyncThunk(
   'ads/fetchAdverts',
-
   async ({ page = 1, limit = 12 }, thunkAPI) => {
     try {
-      const { data } = await axios.get(`/adverts?page=${page}&limit=${limit}`);
+      const { data } = await axios.get(`/adverts?&page=${page}&limit=${limit}`);
 
       return data;
     } catch (error) {
-      console.error('Adverts failed:', error.message);
-      // При помилці запиту повертаємо проміс
-      // який буде відхилений з текстом помилки
+      console.error('Adverts fetch failed:', error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
-
 export const fetchCarImages = createAsyncThunk(
   'ads/fetchCarImages',
   async (_, thunkAPI) => {

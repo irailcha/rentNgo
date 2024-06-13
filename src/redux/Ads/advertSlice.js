@@ -32,7 +32,7 @@ export const advertSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(fetchCarBrands.fulfilled, (state, action) => {
-        state.carBrand = action.payload;
+        state.carBrands = action.payload;
         state.isLoading = false;
       })
       .addCase(fetchCarBrands.rejected, (state, action) => {

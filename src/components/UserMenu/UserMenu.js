@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { signout } from '../../redux/Auth/operations';
 import { GoMoveToEnd } from 'react-icons/go';
-
+import { Button } from './UserMenu.style';
 export const UserMenu = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -13,10 +13,9 @@ export const UserMenu = () => {
   };
   return (
     <div>
-      {' '}
-      <button onClick={handleSubmit}>
+      <Button onClick={handleSubmit}>
         <GoMoveToEnd />
-      </button>
+      </Button>
     </div>
   );
 };

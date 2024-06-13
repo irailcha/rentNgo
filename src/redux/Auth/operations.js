@@ -87,7 +87,7 @@ export const addFavoriteAdvert = createAsyncThunk(
   '/favorite/add',
   async (advertId, thunkAPI) => {
     try {
-      const { data } = await axios.patch(`/adverts/${advertId}/addFavorite`);
+      const { data } = await axios.patch(`auth/favoritesAdd/${advertId}`);
       setAuthHeader(data.token);
       return data;
     } catch (error) {
@@ -99,7 +99,7 @@ export const deleteFavoriteAdvert = createAsyncThunk(
   '/favorite/delete',
   async (advertId, thunkAPI) => {
     try {
-      const { data } = await axios.patch(`/adverts/${advertId}/deleteFavorite`);
+      const { data } = await axios.delete(`/auth/favoritesDel/${advertId}`);
       setAuthHeader(data.token);
       return data;
     } catch (error) {
@@ -112,11 +112,9 @@ export const fetchFavoriteList = createAsyncThunk(
   'auth/fetchFavoriteList',
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get(`/auth/current`);
-      const favoriteList = data.favoriteList;
-      const unique = Array.from(new Set(favoriteList));
-
-      return unique;
+      const { data } = await axios.get(`/auth/favorites`);
+      setAuthHeader(data.token);
+      return data;
       // При успішному запиті повертаємо проміс із даними
     } catch (e) {
       // При помилці запиту повертаємо проміс

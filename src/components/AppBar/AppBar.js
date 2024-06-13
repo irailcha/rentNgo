@@ -1,9 +1,9 @@
+import { useSelector } from 'react-redux';
 import { UserMenu } from '../UserMenu/UserMenu';
 import { FiUserCheck } from 'react-icons/fi';
 import { FiUserPlus } from 'react-icons/fi';
 import { SlHeart } from 'react-icons/sl';
-
-import { useAuth } from '../../hooks/useAuth';
+import { selectIsLoggedIn } from '../../redux/Auth/selectors';
 
 import {
   HeaderContainer,
@@ -14,7 +14,7 @@ import {
 } from './AppBar.style';
 
 export const AppBar = () => {
-  const { isLoggedIn } = useAuth();
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
     <HeaderContainer>

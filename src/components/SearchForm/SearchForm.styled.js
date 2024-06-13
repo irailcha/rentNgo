@@ -1,10 +1,10 @@
-import styled from "@emotion/styled";
-import { css } from "@emotion/react";
-import { Form, Field } from "formik";
+import styled from '@emotion/styled';
+import { css } from '@emotion/react';
+import { Form, Field } from 'formik';
 
 const borderColors = {
-  normal: "transparent",
-  withBorder: "rgba(138, 138, 137, 0.2)",
+  normal: 'transparent',
+  withBorder: 'rgba(138, 138, 137, 0.2)',
 };
 
 export const LabelStyleForm = styled.label`
@@ -45,7 +45,10 @@ export const ButtonStyle = styled.button`
   }
 `;
 
-export const FieldStyle = styled(Field)``;
+export const FieldStyle = styled(Field)`
+  border-radius: 12px;
+  width: 125px;
+`;
 
 const commonFieldStyles = css`
   font-weight: 500;
@@ -63,6 +66,7 @@ export const FieldStyleMark = styled(Field)`
   ${commonFieldStyles}
   border-radius: 12px;
   width: 224px;
+  position: relative;
 `;
 
 export const FieldStylePrice = styled(Field)`
@@ -75,16 +79,16 @@ export const FieldStyleMileage = styled(Field)`
   position: relative;
   ${commonFieldStyles}
   width: 160px;
-  border-radius: ${(props) => (props.left ? "12px 0 0 12px" : "0 12px 12px 0")};
+  border-radius: ${props => (props.left ? '12px 0 0 12px' : '0 12px 12px 0')};
   border: 1px solid ${borderColors.withBorder};
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     bottom: 0;
     width: 1px;
     background-color: ${borderColors.withBorder};
-    left: ${(props) => (props.left ? "100%" : "0")};
+    left: ${props => (props.left ? '100%' : '0')};
   }
 `;

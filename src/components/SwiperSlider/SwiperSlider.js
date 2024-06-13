@@ -3,14 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Navigation, Pagination, A11y } from 'swiper/modules';
 import { Virtual } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { fetchCarImages } from '../../redux/Ads/operations.js';
+import { fetchCarImages } from '../../redux/Ads/operations';
 import { SwiperThumb, ImageStyle } from './SwiperSlider.style';
 import { Loader } from '../helpers/Loader';
 import {
   selectError,
   selectCarImages,
   selectIsLoading,
-} from '../../redux/Ads/selectors.js';
+} from '../../redux/Ads/selectors';
 // Import Swiper styles
 import 'swiper/css';
 

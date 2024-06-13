@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CarList } from '../../components/CarList/CarList';
-
 import { fetchAdverts } from '../../redux/Ads/operations';
 import { Loader } from '../../components/helpers/Loader';
 import { selectIsLoading, selectAdverts } from '../../redux/Ads/selectors';
@@ -50,7 +49,7 @@ const Adverts = () => {
 
   return (
     <div style={{ position: 'relative', height: 'auto' }}>
-      <SearchForm />
+      <SearchForm onSubmit={() => console.log('savedAdverts')} />
       {isLoading && <Loader />}
       <CarList adverts={loadedAdverts} />
 
@@ -64,4 +63,5 @@ const Adverts = () => {
     </div>
   );
 };
+
 export default Adverts;

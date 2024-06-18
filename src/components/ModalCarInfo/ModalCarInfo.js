@@ -1,5 +1,6 @@
 import React from 'react';
 import sprite from '../../images/sprite.svg';
+
 import {
   ContainerModal,
   IconCloseStyle,

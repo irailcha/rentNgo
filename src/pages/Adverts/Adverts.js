@@ -35,12 +35,10 @@ const Adverts = () => {
   }, [adverts]);
 
   useEffect(() => {
-    // Збереження оголошень в localStorage
     localStorage.setItem('loadedAdverts', JSON.stringify(loadedAdverts));
   }, [loadedAdverts]);
 
   useEffect(() => {
-    // Завантаження оголошень з localStorage при першому рендерингу
     const savedAdverts = localStorage.getItem('loadedAdverts');
     if (savedAdverts) {
       setLoadedAdverts(JSON.parse(savedAdverts));

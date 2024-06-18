@@ -21,17 +21,7 @@ export const ButtonFavoriteStyle = styled.button`
 `;
 
 export const IconFavoriteStyle = styled.svg`
-  width: 18px;
-  height: 18px;
-  stroke: ${props => (props.isFavorite ? '#3470FF' : '#fff')};
-
-  fill: ${props => (props.isFavorite ? '#3470FF' : 'transparent')};
-  border: 1px solid transparent;
+  width: 34px;
+  height: 34px;
 `;
-// export const TextStyle = styled.p`
-//   font-weight: 700;
-//   font-size: 24px;
-//   line-height: 30px;
-//   text-align: center;
-//   margin-bottom: 15px;
-// `;
+

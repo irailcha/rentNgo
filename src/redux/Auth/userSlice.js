@@ -53,15 +53,11 @@ const authSlice = createSlice({
         state.token = null;
       })
       .addCase(addFavoriteAdvert.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
         state.favoriteList.push(action.payload);
         state.isFavorite = true;
         state.isLoggedIn = true;
       })
       .addCase(deleteFavoriteAdvert.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
         state.favoriteList = state.favoriteList.filter(
           ad => ad._id !== action.payload
         );
@@ -69,8 +65,6 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
       })
       .addCase(fetchFavoriteList.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
         state.favoriteList = action.payload;
         state.isLoggedIn = true;
       });

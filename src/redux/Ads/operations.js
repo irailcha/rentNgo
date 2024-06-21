@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-
+import { setFilteredAdverts } from './filterSlice';
 axios.defaults.baseURL = 'https://rentngobackend.onrender.com';
 
 // // Utility to add JWT
@@ -54,5 +54,17 @@ export const fetchCarBrands = createAsyncThunk(
       // який буде відхилений з текстом помилки
       return thunkAPI.rejectWithValue(error.message);
     }
+  }
+);
+
+export const filterAdsMake = createAsyncThunk(
+  'filter/filterAdsMake',
+  async (make, { getState, dispatch }) => {
+    const { adverts } = getState().ads;
+    const filtered = adverts.filter(
+      advert => advert.make.toLowerCase() === make.toLowerCase()
+    );
+    dispatch(setFilteredAdverts(filtered));
+    return filtered;
   }
 );

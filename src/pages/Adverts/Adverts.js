@@ -5,13 +5,16 @@ import { fetchAdverts } from '../../redux/Ads/operations';
 import { Loader } from '../../components/helpers/Loader';
 import { selectIsLoading, selectAdverts } from '../../redux/Ads/selectors';
 import { ButtonStyle, ButtonUpPage } from './Adverts.style';
-import { SearchForm } from 'components/SearchForm/SearchForm';
+import { SearchForm } from '../../components/SearchForm/SearchForm';
 import { GoArrowUp } from 'react-icons/go';
+import { selectFilteredAdvertsByMake } from '../../redux/Ads/selectors';
 
 const Adverts = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const adverts = useSelector(selectAdverts);
+  const filteredAdverts = useSelector(selectFilteredAdvertsByMake);
+  const selectedMake = useSelector(state => state.filter.selectedMake);
   const [page, setPage] = useState(1);
   const [isLoadMoreHidden, setIsLoadMoreHidden] = useState(true);
   const [loadedAdverts, setLoadedAdverts] = useState([]);
@@ -47,10 +50,9 @@ const Adverts = () => {
 
   return (
     <div style={{ position: 'relative', height: 'auto' }}>
-      <SearchForm onSubmit={() => console.log('savedAdverts')} />
+      <SearchForm />
       {isLoading && <Loader />}
-      <CarList adverts={loadedAdverts} />
-
+      <CarList adverts={selectedMake ? filteredAdverts : loadedAdverts} />
       {!isLoadMoreHidden && (
         <ButtonStyle onClick={loadMore}>Load More</ButtonStyle>
       )}

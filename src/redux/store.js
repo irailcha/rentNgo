@@ -12,6 +12,7 @@ import {
 
 import { authReducer } from './Auth/userSlice.js';
 import { advertReducer } from './Ads/advertSlice.js';
+import { filterReducer } from './Ads/filterSlice.js';
 
 // Persisting token field from auth slice to localstorage
 const authPersistConfig = {
@@ -25,13 +26,19 @@ const advertPersistConfig = {
   storage,
 };
 
+const filterPersistConfig = {
+  key: 'filter',
+  storage,
+};
+
 const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
   ads: persistReducer(advertPersistConfig, advertReducer),
+  filter: persistReducer(filterPersistConfig, filterReducer),
 });
 
 const persistedReducer = persistReducer(
-  { key: 'root', storage, whitelist: ['auth', 'ads'] },
+  { key: 'root', storage, whitelist: ['auth', 'ads', 'filter'] },
   rootReducer
 );
 

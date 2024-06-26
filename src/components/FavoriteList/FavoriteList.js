@@ -28,7 +28,7 @@ export const FavoriteList = ({ advert }) => {
     } else {
       setIsFavorite(false);
     }
-  }, [advert._id]);
+  }, [favoriteList, advert._id]);
 
   const handleChangeFavoriteAds = () => {
     if (!isLoggedIn) {

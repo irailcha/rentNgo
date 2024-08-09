@@ -9,7 +9,7 @@ import { fetchFavoriteList } from '../../redux/Auth/operations';
 import { CarList } from '../../components/CarList/CarList';
 import { MessageStyle, LinkStyle } from './Favorite.style';
 import { GoArrowLeft } from 'react-icons/go';
-
+import { Container } from '../Home/Home.style';
 const Favorite = () => {
   const location = useLocation();
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const Favorite = () => {
   }, [dispatch, isLoggedIn]);
 
   return (
-    <div>
+    <Container>
       <LinkStyle to="/adverts" state={{ from: location.pathname }}>
         <span>
           <GoArrowLeft />
@@ -35,7 +35,7 @@ const Favorite = () => {
       ) : (
         <MessageStyle>You haven't added any favorite ads yet</MessageStyle>
       )}
-    </div>
+    </Container>
   );
 };
 

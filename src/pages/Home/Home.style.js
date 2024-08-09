@@ -7,3 +7,7 @@ export const Title = styled.h1`
   text-align: center;
   margin-bottom: 15px;
 `;
+
+export const Container = styled.div`
+  height: 100vh;
+`;

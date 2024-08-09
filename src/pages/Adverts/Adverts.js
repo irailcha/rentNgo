@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { CarList } from '../../components/CarList/CarList';
 import { fetchAdverts } from '../../redux/Ads/operations';
 import { Loader } from '../../components/helpers/Loader';
-import { ButtonStyle, ButtonUpPage } from './Adverts.style';
+import { ButtonStyle, ButtonUpPage, ContainerAdverts } from './Adverts.style';
 import { GoArrowUp } from 'react-icons/go';
 import { selectIsLoading, selectAdverts } from '../../redux/Ads/selectors';
 import { fetchFavoriteList } from '../../redux/Auth/operations';
@@ -54,7 +54,7 @@ const Adverts = () => {
   }, [loadedAdverts]);
 
   return (
-    <div style={{ position: 'relative', height: 'auto' }}>
+    <ContainerAdverts style={{ position: 'relative', height: 'auto' }}>
       {isLoading && <Loader />}
       <CarList adverts={loadedAdverts} />
       {!isLoadMoreHidden && (
@@ -63,7 +63,7 @@ const Adverts = () => {
       <ButtonUpPage onClick={() => window.scrollTo(0, 0)}>
         <GoArrowUp />
       </ButtonUpPage>
-    </div>
+    </ContainerAdverts>
   );
 };
 

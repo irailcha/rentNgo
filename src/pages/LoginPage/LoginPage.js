@@ -1,10 +1,10 @@
 import { UserLogin } from '../../components/UserLogin/UserLogin';
-
+import { Container } from '../Home/Home.style';
 const LoginPage = () => {
   return (
-    <div>
+    <Container>
       <UserLogin />
-    </div>
+    </Container>
   );
 };
 export default LoginPage;

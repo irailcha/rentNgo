@@ -1,13 +1,13 @@
 import SwiperSlider from '../../components/SwiperSlider/SwiperSlider.js';
-import { Title } from './Home.style';
+import { Title, Container } from './Home.style';
 const Home = () => {
   return (
-    <div>
+    <Container style={{ height: 'auto' }}>
       <Title>
         Empower Your Journey: <br /> Seamless Car Rentals Tailored Just for You!
       </Title>
       <SwiperSlider />
-    </div>
+    </Container>
   );
 };
 

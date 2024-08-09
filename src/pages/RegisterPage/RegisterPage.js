@@ -1,10 +1,10 @@
 import { UserRegister } from '../../components/UserRegister/UserRegister';
-
+import { Container } from '../Home/Home.style';
 const RegisterPage = () => {
   return (
-    <div>
+    <Container>
       <UserRegister />
-    </div>
+    </Container>
   );
 };
 export default RegisterPage;

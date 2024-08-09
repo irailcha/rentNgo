@@ -12,7 +12,7 @@ export const CarBaseInfoStyle = styled.p`
   font-size: 12px;
   line-height: 18px;
 
-  color: rgba(18, 20, 23, 0.5);
+  color: #000000;
 `;
 
 export const ContainerTitleStyle = styled.div`

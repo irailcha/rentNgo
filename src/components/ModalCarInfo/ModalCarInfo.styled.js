@@ -114,12 +114,11 @@ export const RentalStyleContainer = styled.ul`
 export const ContainerInfoCar = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
 `;
 
 export const ButtonStyle = styled.button`
-  display: inline-block;
+  display: block;
   width: 40%;
   border-radius: 12px;
   padding: 12px 50px;
@@ -129,6 +128,7 @@ export const ButtonStyle = styled.button`
   line-height: 20px;
   background-color: #3470ff;
   color: #ffffff;
+  margin: auto;
 
   :hover {
     background-color: #0b44cd;

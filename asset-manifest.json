@@ -1,22 +1,24 @@
 {
   "files": {
-    "main.css": "/rentNgo/static/css/main.b81c807c.css",
-    "main.js": "/rentNgo/static/js/main.182dc49d.js",
-    "static/js/109.97aa4dbd.chunk.js": "/rentNgo/static/js/109.97aa4dbd.chunk.js",
-    "static/js/24.f424f54f.chunk.js": "/rentNgo/static/js/24.f424f54f.chunk.js",
+    "main.css": "/rentNgo/static/css/main.c646665a.css",
+    "main.js": "/rentNgo/static/js/main.240dc638.js",
+    "static/js/109.7392f2a5.chunk.js": "/rentNgo/static/js/109.7392f2a5.chunk.js",
+    "static/js/24.4d13eca2.chunk.js": "/rentNgo/static/js/24.4d13eca2.chunk.js",
     "static/js/354.06d5b7bc.chunk.js": "/rentNgo/static/js/354.06d5b7bc.chunk.js",
     "static/js/695.68317e7c.chunk.js": "/rentNgo/static/js/695.68317e7c.chunk.js",
+    "static/media/background.jpg": "/rentNgo/static/media/background.ae16fa301ec5e69316d1.jpg",
+    "static/media/backgraundAdverts.jpg": "/rentNgo/static/media/backgraundAdverts.fee98d19ec312b6b11bb.jpg",
     "static/media/sprite.svg": "/rentNgo/static/media/sprite.77b70dd5818a18aaa5b6337f497bef05.svg",
     "index.html": "/rentNgo/index.html",
-    "main.b81c807c.css.map": "/rentNgo/static/css/main.b81c807c.css.map",
-    "main.182dc49d.js.map": "/rentNgo/static/js/main.182dc49d.js.map",
-    "109.97aa4dbd.chunk.js.map": "/rentNgo/static/js/109.97aa4dbd.chunk.js.map",
-    "24.f424f54f.chunk.js.map": "/rentNgo/static/js/24.f424f54f.chunk.js.map",
+    "main.c646665a.css.map": "/rentNgo/static/css/main.c646665a.css.map",
+    "main.240dc638.js.map": "/rentNgo/static/js/main.240dc638.js.map",
+    "109.7392f2a5.chunk.js.map": "/rentNgo/static/js/109.7392f2a5.chunk.js.map",
+    "24.4d13eca2.chunk.js.map": "/rentNgo/static/js/24.4d13eca2.chunk.js.map",
     "354.06d5b7bc.chunk.js.map": "/rentNgo/static/js/354.06d5b7bc.chunk.js.map",
     "695.68317e7c.chunk.js.map": "/rentNgo/static/js/695.68317e7c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b81c807c.css",
-    "static/js/main.182dc49d.js"
+    "static/css/main.c646665a.css",
+    "static/js/main.240dc638.js"
   ]
 }

@@ -1,36 +1,22 @@
 {
   "files": {
-    "main.css": "/rentNgo/static/css/main.f2db3b31.css",
-    "main.js": "/rentNgo/static/js/main.9dd93acc.js",
-    "static/css/309.9efaa58a.chunk.css": "/rentNgo/static/css/309.9efaa58a.chunk.css",
-    "static/js/309.77dab8f2.chunk.js": "/rentNgo/static/js/309.77dab8f2.chunk.js",
-    "static/js/394.6235fd23.chunk.js": "/rentNgo/static/js/394.6235fd23.chunk.js",
-    "static/js/755.70ba76dd.chunk.js": "/rentNgo/static/js/755.70ba76dd.chunk.js",
+    "main.css": "/rentNgo/static/css/main.b81c807c.css",
+    "main.js": "/rentNgo/static/js/main.182dc49d.js",
     "static/js/109.97aa4dbd.chunk.js": "/rentNgo/static/js/109.97aa4dbd.chunk.js",
     "static/js/24.f424f54f.chunk.js": "/rentNgo/static/js/24.f424f54f.chunk.js",
     "static/js/354.06d5b7bc.chunk.js": "/rentNgo/static/js/354.06d5b7bc.chunk.js",
     "static/js/695.68317e7c.chunk.js": "/rentNgo/static/js/695.68317e7c.chunk.js",
-    "static/js/705.78f4bd52.chunk.js": "/rentNgo/static/js/705.78f4bd52.chunk.js",
-    "static/js/863.69bcabd8.chunk.js": "/rentNgo/static/js/863.69bcabd8.chunk.js",
-    "static/js/889.db03418e.chunk.js": "/rentNgo/static/js/889.db03418e.chunk.js",
-    "static/media/sprite.svg#sprite": "/rentNgo/static/media/sprite.77b70dd5818a18aaa5b6337f497bef05.svg",
+    "static/media/sprite.svg": "/rentNgo/static/media/sprite.77b70dd5818a18aaa5b6337f497bef05.svg",
     "index.html": "/rentNgo/index.html",
-    "main.f2db3b31.css.map": "/rentNgo/static/css/main.f2db3b31.css.map",
-    "main.9dd93acc.js.map": "/rentNgo/static/js/main.9dd93acc.js.map",
-    "309.9efaa58a.chunk.css.map": "/rentNgo/static/css/309.9efaa58a.chunk.css.map",
-    "309.77dab8f2.chunk.js.map": "/rentNgo/static/js/309.77dab8f2.chunk.js.map",
-    "394.6235fd23.chunk.js.map": "/rentNgo/static/js/394.6235fd23.chunk.js.map",
-    "755.70ba76dd.chunk.js.map": "/rentNgo/static/js/755.70ba76dd.chunk.js.map",
+    "main.b81c807c.css.map": "/rentNgo/static/css/main.b81c807c.css.map",
+    "main.182dc49d.js.map": "/rentNgo/static/js/main.182dc49d.js.map",
     "109.97aa4dbd.chunk.js.map": "/rentNgo/static/js/109.97aa4dbd.chunk.js.map",
     "24.f424f54f.chunk.js.map": "/rentNgo/static/js/24.f424f54f.chunk.js.map",
     "354.06d5b7bc.chunk.js.map": "/rentNgo/static/js/354.06d5b7bc.chunk.js.map",
-    "695.68317e7c.chunk.js.map": "/rentNgo/static/js/695.68317e7c.chunk.js.map",
-    "705.78f4bd52.chunk.js.map": "/rentNgo/static/js/705.78f4bd52.chunk.js.map",
-    "863.69bcabd8.chunk.js.map": "/rentNgo/static/js/863.69bcabd8.chunk.js.map",
-    "889.db03418e.chunk.js.map": "/rentNgo/static/js/889.db03418e.chunk.js.map"
+    "695.68317e7c.chunk.js.map": "/rentNgo/static/js/695.68317e7c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f2db3b31.css",
-    "static/js/main.9dd93acc.js"
+    "static/css/main.b81c807c.css",
+    "static/js/main.182dc49d.js"
   ]
 }

@@ -16,6 +16,7 @@ import {
   ContainerInfoCar,
   ButtonStyle,
   InfoCarStyle,
+  ImageContainer,
 } from './ModalCarInfo.styled';
 
 export const ModalCarInfo = ({ onClose, fullArvertInfo }) => {
@@ -46,7 +47,10 @@ export const ModalCarInfo = ({ onClose, fullArvertInfo }) => {
             <use href={`${sprite}#icon-x-1`}></use>
           </IconCloseStyle>
         </ButtonCloseStyle>
-        <ImageStyle src={img} alt={make} />
+        <ImageContainer>
+          <ImageStyle src={img} alt={make} />
+        </ImageContainer>
+
         <ContainerInfoCar>
           <div>
             <TitleStyle>

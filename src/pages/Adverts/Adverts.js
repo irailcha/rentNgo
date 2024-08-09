@@ -3,18 +3,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { CarList } from '../../components/CarList/CarList';
 import { fetchAdverts } from '../../redux/Ads/operations';
 import { Loader } from '../../components/helpers/Loader';
-import { selectIsLoading, selectAdverts } from '../../redux/Ads/selectors';
 import { ButtonStyle, ButtonUpPage } from './Adverts.style';
-import { SearchForm } from '../../components/SearchForm/SearchForm';
 import { GoArrowUp } from 'react-icons/go';
-import { selectFilteredAdvertsByMake } from '../../redux/Ads/selectors';
+import { selectIsLoading, selectAdverts } from '../../redux/Ads/selectors';
+import { fetchFavoriteList } from '../../redux/Auth/operations';
+import { selectIsLoggedIn } from '../../redux/Auth/selectors';
 
 const Adverts = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const adverts = useSelector(selectAdverts);
-  const filteredAdverts = useSelector(selectFilteredAdvertsByMake);
-  const selectedMake = useSelector(state => state.filter.selectedMake);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const [page, setPage] = useState(1);
   const [isLoadMoreHidden, setIsLoadMoreHidden] = useState(true);
   const [loadedAdverts, setLoadedAdverts] = useState([]);
@@ -23,23 +22,25 @@ const Adverts = () => {
     dispatch(fetchAdverts({ page, limit: 12 }));
   }, [dispatch, page]);
 
+  useEffect(() => {
+    if (isLoggedIn) {
+      dispatch(fetchFavoriteList());
+    }
+  }, [dispatch, isLoggedIn]);
+
+  useEffect(() => {
+    setLoadedAdverts(prevAdverts => {
+      const newAdverts = adverts;
+      return [...prevAdverts, ...newAdverts];
+    });
+
+    setIsLoadMoreHidden(adverts.length < 12);
+  }, [adverts]);
+
   const loadMore = () => {
     if (isLoading) return;
     setPage(prevPage => prevPage + 1);
   };
-
-  useEffect(() => {
-    setLoadedAdverts(prevAdverts => [...prevAdverts, ...adverts]);
-    if (adverts.length < 12) {
-      setIsLoadMoreHidden(true);
-    } else {
-      setIsLoadMoreHidden(false);
-    }
-  }, [adverts]);
-
-  useEffect(() => {
-    localStorage.setItem('loadedAdverts', JSON.stringify(loadedAdverts));
-  }, [loadedAdverts]);
 
   useEffect(() => {
     const savedAdverts = localStorage.getItem('loadedAdverts');
@@ -48,15 +49,17 @@ const Adverts = () => {
     }
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem('loadedAdverts', JSON.stringify(loadedAdverts));
+  }, [loadedAdverts]);
+
   return (
     <div style={{ position: 'relative', height: 'auto' }}>
-      <SearchForm />
       {isLoading && <Loader />}
-      <CarList adverts={selectedMake ? filteredAdverts : loadedAdverts} />
+      <CarList adverts={loadedAdverts} />
       {!isLoadMoreHidden && (
         <ButtonStyle onClick={loadMore}>Load More</ButtonStyle>
       )}
-
       <ButtonUpPage onClick={() => window.scrollTo(0, 0)}>
         <GoArrowUp />
       </ButtonUpPage>

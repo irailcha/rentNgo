@@ -96,7 +96,7 @@ export const addFavoriteAdvert = createAsyncThunk(
   }
 );
 export const deleteFavoriteAdvert = createAsyncThunk(
-  '/auth/favoritesDel',
+  'auth/favoritesDel',
   async (advertId, thunkAPI) => {
     try {
       const { data } = await axios.patch(`/auth/favoritesDel/${advertId}`);
@@ -109,7 +109,7 @@ export const deleteFavoriteAdvert = createAsyncThunk(
 );
 
 export const fetchFavoriteList = createAsyncThunk(
-  '/auth/favorites',
+  'auth/favorites',
   async (_, thunkAPI) => {
     try {
       const { data } = await axios.get(`/auth/favorites`);

@@ -26,7 +26,7 @@ export const AppBar = () => {
         <NavLinkPage to="/adverts">Adverts</NavLinkPage>
       </NavContainer>
       <NavContainer>
-        <NavLinkPage to="/adverts/favorite">
+        <NavLinkPage to="/favorite">
           <SlHeart />
         </NavLinkPage>
       </NavContainer>

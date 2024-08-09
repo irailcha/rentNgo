@@ -4,28 +4,25 @@ export const ModalBackDrop = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: auto;
   background-color: rgba(18, 20, 23, 0.5);
   z-index: 100;
 `;
 
 export const ContainerModal = styled.div`
-  position: absolute;
-  display: block;
-
+  position: fixed;
   z-index: 111;
-  width: 541px;
-  /* max-height: 100vh; або інше значення відповідно до вашого дизайну */
   overflow-y: auto;
   background-color: #ffffff;
-
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 24px;
   padding: 40px;
-  transform: 250ms cubic-bezier(0, 0.99, 0.99, 0.01);
+  width: 90%;
+  max-width: 541px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 `;
 
 export const IconCloseStyle = styled.svg`
@@ -42,7 +39,6 @@ export const ButtonCloseStyle = styled.button`
 
 export const TitleStyle = styled.h2`
   display: flex;
-  /* margin-bottom: 8px; */
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
@@ -54,14 +50,23 @@ export const TitleStyleSpan = styled.span`
 `;
 
 export const ImageStyle = styled.img`
-  height: 248px;
+  height: auto;
+  width: 100%;
+  object-fit: contain;
+`;
+
+export const ImageContainer = styled.div`
+  max-width: 461px;
+  max-height: 248px;
+  overflow: hidden;
+  border-radius: 14px;
 `;
 
 export const ParagraphInfoStyle = styled.p`
   font-weight: 400;
   font-size: 12px;
   line-height: 18px;
-  /* margin-bottom: 14px; */
+  margin-bottom: 14px;
   color: rgba(18, 20, 23, 0.5);
 `;
 
@@ -109,6 +114,8 @@ export const RentalStyleContainer = styled.ul`
 export const ContainerInfoCar = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 export const ButtonStyle = styled.button`

@@ -8,11 +8,10 @@ import { RestrictedRoute } from '../RestrictedRoute';
 import { refreshUser } from '../../redux/Auth/operations';
 import { useAuth } from '../../hooks/useAuth';
 import { Loader } from '../helpers/Loader';
+import Home from '../../pages/Home/Home';
+import Adverts from '../../pages/Adverts/Adverts';
+import Favorite from '../../pages/Favorite/Favorite';
 
-// Ліниве завантаження компонентів
-const Home = lazy(() => import('../../pages/Home/Home'));
-const Adverts = lazy(() => import('../../pages/Adverts/Adverts'));
-const Favorite = lazy(() => import('../../pages/Favorite/Favorite'));
 const LoginPage = lazy(() => import('../../pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() =>
   import('../../pages/RegisterPage/RegisterPage')
@@ -38,7 +37,7 @@ const App = () => {
           <Route index element={<Home />} />
           <Route path="adverts" element={<Adverts />} />
           <Route
-            path="adverts/favorite"
+            path="favorite"
             element={
               <PrivateRoute
                 redirectTo="../auth/signin"

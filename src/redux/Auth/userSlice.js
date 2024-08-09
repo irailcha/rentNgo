@@ -8,6 +8,7 @@ import {
   deleteFavoriteAdvert,
   fetchFavoriteList,
 } from './operations';
+
 const initialState = {
   user: { username: null, email: null },
   token: null,
@@ -15,6 +16,7 @@ const initialState = {
   isRefreshing: false,
   isFavorite: false,
   favoriteList: [],
+  error: null,
 };
 
 const authSlice = createSlice({
@@ -27,16 +29,23 @@ const authSlice = createSlice({
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
+      .addCase(signup.rejected, (state, action) => {
+        state.error = action.payload;
+      })
       .addCase(signin.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
+      })
+      .addCase(signin.rejected, (state, action) => {
+        state.error = action.payload;
       })
       .addCase(signout.fulfilled, state => {
         state.user = { username: null, email: null };
         state.token = null;
         state.isLoggedIn = false;
         state.favoriteList = [];
+        state.error = null;
       })
       .addCase(refreshUser.pending, state => {
         state.isRefreshing = true;
@@ -54,15 +63,11 @@ const authSlice = createSlice({
       })
       .addCase(addFavoriteAdvert.fulfilled, (state, action) => {
         state.favoriteList.push(action.payload);
-        state.isFavorite = true;
-        state.isLoggedIn = true;
       })
       .addCase(deleteFavoriteAdvert.fulfilled, (state, action) => {
         state.favoriteList = state.favoriteList.filter(
-          ad => ad._id !== action.payload
+          fav => fav._id !== action.payload._id
         );
-        state.isFavorite = false;
-        state.isLoggedIn = true;
       })
       .addCase(fetchFavoriteList.fulfilled, (state, action) => {
         state.favoriteList = action.payload;

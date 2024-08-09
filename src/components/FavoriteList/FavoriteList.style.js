@@ -1,17 +1,5 @@
 import styled from '@emotion/styled';
 
-export const CardItemStyle = styled.li`
-  display: block;
-  position: relative;
-  max-width: 274px;
-  margin-bottom: 50px;
-`;
-export const CardListStyle = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-`;
-
 export const ButtonFavoriteStyle = styled.button`
   position: absolute;
   z-index: 1;
@@ -23,5 +11,6 @@ export const ButtonFavoriteStyle = styled.button`
 export const IconFavoriteStyle = styled.svg`
   width: 34px;
   height: 34px;
+  stroke: ${props => (props.isFavorite ? '#3470FF' : '#fff')};
+  fill: ${props => (props.isFavorite ? '#3470FF' : 'transparent')};
 `;
-

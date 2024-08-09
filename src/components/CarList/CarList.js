@@ -1,5 +1,5 @@
 import { CarCard } from '../CarCard/CarCard';
-import { FavoriteList } from '../FavoriteList/FavoriteList';
+
 import { CardListStyle, CardItemStyle } from './CarList.styled';
 
 export const CarList = ({ adverts }) => {
@@ -8,8 +8,7 @@ export const CarList = ({ adverts }) => {
       <CardListStyle>
         {adverts.map(advert => (
           <CardItemStyle key={advert._id}>
-            <FavoriteList advert={advert} />
-            <CarCard car={advert} />
+            <CarCard key={advert._id} car={advert} />
           </CardItemStyle>
         ))}
       </CardListStyle>

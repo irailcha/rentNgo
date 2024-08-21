@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkrentngo=self.webpackChunkrentngo||[]).push([[354],{7354:function(r,e,n){n.r(e),n.d(e,{default:function(){return t}});var s=n(7689),c=n(3329);function t(){var r=(0,s.lk)();return console.error(r),(0,c.jsxs)("div",{id:"error-page",children:[(0,c.jsx)("h1",{children:"Oops!"}),(0,c.jsx)("p",{children:"Sorry, an unexpected error has occurred."}),(0,c.jsx)("p",{children:(0,c.jsx)("i",{children:r.statusText||r.message})})]})}}}]);
-//# sourceMappingURL=354.06d5b7bc.chunk.js.map

@@ -1,9 +1,5 @@
-import { useSelector } from 'react-redux';
-import { UserMenu } from '../UserMenu/UserMenu';
-import { FiUserCheck } from 'react-icons/fi';
-import { FiUserPlus } from 'react-icons/fi';
-import { SlHeart } from 'react-icons/sl';
-import { selectIsLoggedIn } from '../../redux/Auth/selectors';
+import { AiFillMail } from "react-icons/ai";
+import { AiFillPhone } from "react-icons/ai";
 
 import {
   HeaderContainer,
@@ -14,43 +10,24 @@ import {
 } from './AppBar.style';
 
 export const AppBar = () => {
-  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
     <HeaderContainer>
-      <nav>
-        <LogoLinkStyle to="/rentNgo">Rent-n-go</LogoLinkStyle>
-      </nav>
+   
+   <LogoLinkStyle href="/rentNgo">Rent-n-go</LogoLinkStyle>
+   
       <NavContainer>
         <NavLinkPage to="/">Home</NavLinkPage>
         <NavLinkPage to="/adverts">Adverts</NavLinkPage>
       </NavContainer>
       <NavContainer>
-        <NavLinkPage to="/favorite">
-          <SlHeart />
-        </NavLinkPage>
-      </NavContainer>
-      <NavContainer>
         <LinksStyle>
-          <a href="tel:+1234567890">+1234567890</a>
-          <a href="example@example.com">example@example.com</a>
+          <a href="tel:+1234567890"><AiFillPhone /></a>
+          <a href="example@example.com"><AiFillMail /></a>
         </LinksStyle>
       </NavContainer>
 
-      {isLoggedIn ? (
-        <UserMenu />
-      ) : (
-        <NavContainer>
-          <LinksStyle>
-            <NavLinkPage to="auth/signin">
-              <FiUserCheck /> Sign in
-            </NavLinkPage>
-            <NavLinkPage to="auth/signup">
-              <FiUserPlus /> Sign up
-            </NavLinkPage>
-          </LinksStyle>
-        </NavContainer>
-      )}
+  
     </HeaderContainer>
   );
 };

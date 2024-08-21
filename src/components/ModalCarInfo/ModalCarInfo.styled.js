@@ -118,8 +118,7 @@ export const ContainerInfoCar = styled.div`
 `;
 
 export const ButtonStyle = styled.button`
-  display: block;
-  width: 40%;
+  display: inline-block;
   border-radius: 12px;
   padding: 12px 50px;
   cursor: pointer;

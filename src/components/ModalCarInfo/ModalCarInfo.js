@@ -19,8 +19,8 @@ import {
   ImageContainer,
 } from './ModalCarInfo.styled';
 
-export const ModalCarInfo = ({ onClose, fullArvertInfo }) => {
-  if (!fullArvertInfo) {
+export const ModalCarInfo = ({ onClose, fullAdvertInfo }) => {
+  if (!fullAdvertInfo) {
     return null; // або інша логіка обробки відсутності advertInfo
   }
   const {
@@ -37,7 +37,7 @@ export const ModalCarInfo = ({ onClose, fullArvertInfo }) => {
     accessories,
     mileage,
     rentalPrice,
-  } = fullArvertInfo;
+  } = fullAdvertInfo;
 
   return (
     <ModalBackDrop>

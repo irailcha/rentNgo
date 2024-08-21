@@ -1,15 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+
 import { ModalCarInfo } from '../ModalCarInfo/ModalCarInfo';
 import { FavoriteList } from '../FavoriteList/FavoriteList';
-import {
-  selectIsLoggedIn,
-  selectFavoriteList,
-} from '../../redux/Auth/selectors';
-import {
-  addFavoriteAdvert,
-  deleteFavoriteAdvert,
-} from '../../redux/Auth/operations';
+
 import {
   CarBaseInfoStyle,
   ContainerTitleStyle,
@@ -33,35 +26,43 @@ export const CarCard = ({ car }) => {
     id,
   } = car;
 
-  const dispatch = useDispatch();
+
   const [isOpen, setIsOpen] = useState(false);
-  const favoriteList = useSelector(selectFavoriteList);
-  const isLoggedIn = useSelector(selectIsLoggedIn);
   const [isFavorite, setIsFavorite] = useState(false);
+const [favoriteList, setFavoriteList]=useState([])
+const handleChangeFavorite = () => {
+  setFavoriteList(prevFavoriteList => {
+    const isAlreadyFav = prevFavoriteList.some(fav => fav.id === id);
 
-  useEffect(() => {
-    setIsFavorite(favoriteList.some(fav => fav._id === car._id));
-  }, [favoriteList, car._id]);
-
-  const handleChangeFavoriteAds = async () => {
-    if (!isLoggedIn) {
-      alert('Please log in');
-      return;
+    if (!isAlreadyFav) {
+      // Додаємо автомобіль до списку улюблених
+      setIsFavorite(true);
+      return [...prevFavoriteList, car];
+    } else {
+      // Вилучаємо автомобіль з улюблених
+      setIsFavorite(false);
+      return prevFavoriteList.filter(fav => fav.id !== id);
     }
+  });
+};
 
-    try {
-      if (isFavorite) {
-        await dispatch(deleteFavoriteAdvert(car._id)).unwrap();
-        setIsFavorite(false);
-      } else {
-        await dispatch(addFavoriteAdvert(car._id)).unwrap();
-        setIsFavorite(true);
-      }
-    } catch (error) {
-      console.error('Error updating favorite ads:', error);
-      alert('Failed to update favorite ads');
-    }
-  };
+useEffect(()=>{
+localStorage.setItem("favoriteList", JSON.stringify(favoriteList));
+
+}, [favoriteList])
+
+useEffect(() => {
+  const favoriteAdverts = localStorage.getItem('favoriteList');
+  if (favoriteAdverts) {
+    const parsedAdverts = JSON.parse(favoriteAdverts);
+    setFavoriteList(parsedAdverts);
+    const isFavorited = parsedAdverts.some(fav => fav.id === id);
+    setIsFavorite(isFavorited);
+  }
+}, [id]);
+
+
+console.log("Current favoriteList:", favoriteList);
 
   return (
     <div key={car._id}>
@@ -85,15 +86,15 @@ export const CarCard = ({ car }) => {
           Learn more
         </ButtonStyle>
         <FavoriteList
-          isFavorite={isFavorite && isLoggedIn}
-          handleChangeFavoriteAds={handleChangeFavoriteAds}
+          isFavorite={isFavorite}
+          handleChangeFavorite={handleChangeFavorite}
         />
       </CarCardStyle>
       {isOpen && (
         <ModalCarInfo
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
-          fullArvertInfo={car}
+          fullAdvertInfo={car}
         />
       )}
     </div>

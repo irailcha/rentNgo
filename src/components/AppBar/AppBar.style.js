@@ -43,6 +43,15 @@ export const NavContainer = styled.nav`
   display: flex;
   gap: 15px;
   align-items: center;
+  flex-direction: row;
+
+@media (max-width: 768px) {
+ flex-direction: column;
+  
+}
+
+
+
 `;
 
 export const NavLinkPage = styled(NavLink)`
@@ -65,10 +74,15 @@ export const UserBarButtonStyle = styled.button`
 
 export const LinksStyle = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 8px;
 
   a:hover {
     color: #0b44cd;
   }
+
+  @media (max-width: 768px) {
+ flex-direction: column;
+  
+}
 `;

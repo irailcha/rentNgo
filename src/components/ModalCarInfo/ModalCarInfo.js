@@ -19,7 +19,7 @@ import {
   ImageContainer,
 } from './ModalCarInfo.styled';
 
-export const ModalCarInfo = ({ onClose, fullAdvertInfo }) => {
+export const ModalCarInfo = ({onClose, fullAdvertInfo }) => {
   if (!fullAdvertInfo) {
     return null; // або інша логіка обробки відсутності advertInfo
   }

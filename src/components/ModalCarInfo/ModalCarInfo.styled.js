@@ -8,6 +8,7 @@ export const ModalBackDrop = styled.div`
   height: auto;
   background-color: rgba(18, 20, 23, 0.5);
   z-index: 100;
+
 `;
 
 export const ContainerModal = styled.div`

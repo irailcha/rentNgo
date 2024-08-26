@@ -13,7 +13,7 @@ import {
   CarCardStyle,
 } from './CarCard.styled';
 
-export const CarCard = ({ car }) => {
+export const CarCard = ({ advert, onClick, favoriteList }) => {
   const {
     img,
     make,
@@ -24,48 +24,24 @@ export const CarCard = ({ car }) => {
     rentalCompany,
     type,
     id,
-  } = car;
+  } = advert;
 
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(false);
-const [favoriteList, setFavoriteList]=useState([])
-const handleChangeFavorite = () => {
-  setFavoriteList(prevFavoriteList => {
-    const isAlreadyFav = prevFavoriteList.some(fav => fav.id === id);
+const [isOpen, setIsOpen] = useState(false);
 
-    if (!isAlreadyFav) {
-      // Додаємо автомобіль до списку улюблених
-      setIsFavorite(true);
-      return [...prevFavoriteList, car];
-    } else {
-      // Вилучаємо автомобіль з улюблених
-      setIsFavorite(false);
-      return prevFavoriteList.filter(fav => fav.id !== id);
-    }
-  });
-};
-
-useEffect(()=>{
-localStorage.setItem("favoriteList", JSON.stringify(favoriteList));
-
-}, [favoriteList])
 
 useEffect(() => {
-  const favoriteAdverts = localStorage.getItem('favoriteList');
-  if (favoriteAdverts) {
-    const parsedAdverts = JSON.parse(favoriteAdverts);
-    setFavoriteList(parsedAdverts);
-    const isFavorited = parsedAdverts.some(fav => fav.id === id);
-    setIsFavorite(isFavorited);
+  if (isOpen) {
+    document.body.style.overflow = 'hidden'; 
+  } else {
+    document.body.style.overflow = 'auto'; 
   }
-}, [id]);
+}, [isOpen]);
 
 
-console.log("Current favoriteList:", favoriteList);
 
   return (
-    <div key={car._id}>
+    <div key={advert._id}>
       <CarCardStyle>
         <div>
           <Container>
@@ -86,15 +62,15 @@ console.log("Current favoriteList:", favoriteList);
           Learn more
         </ButtonStyle>
         <FavoriteList
-          isFavorite={isFavorite}
-          handleChangeFavorite={handleChangeFavorite}
+             isFavorite={favoriteList.some(fav => fav.id === advert.id)} 
+          onClick={onClick}
+          advert={advert}
         />
       </CarCardStyle>
       {isOpen && (
         <ModalCarInfo
-          isOpen={isOpen}
           onClose={() => setIsOpen(false)}
-          fullAdvertInfo={car}
+          fullAdvertInfo={advert}
         />
       )}
     </div>

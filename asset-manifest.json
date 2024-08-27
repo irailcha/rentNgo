@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/rentNgo/static/css/main.c646665a.css",
-    "main.js": "/rentNgo/static/js/main.fa206111.js",
+    "main.js": "/rentNgo/static/js/main.d6019021.js",
     "static/js/354.3dbaf79c.chunk.js": "/rentNgo/static/js/354.3dbaf79c.chunk.js",
     "static/media/background.jpg": "/rentNgo/static/media/background.ae16fa301ec5e69316d1.jpg",
     "static/media/backgraundAdverts.jpg": "/rentNgo/static/media/backgraundAdverts.fee98d19ec312b6b11bb.jpg",
     "static/media/sprite.svg": "/rentNgo/static/media/sprite.77b70dd5818a18aaa5b6337f497bef05.svg",
     "index.html": "/rentNgo/index.html",
     "main.c646665a.css.map": "/rentNgo/static/css/main.c646665a.css.map",
-    "main.fa206111.js.map": "/rentNgo/static/js/main.fa206111.js.map",
+    "main.d6019021.js.map": "/rentNgo/static/js/main.d6019021.js.map",
     "354.3dbaf79c.chunk.js.map": "/rentNgo/static/js/354.3dbaf79c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c646665a.css",
-    "static/js/main.fa206111.js"
+    "static/js/main.d6019021.js"
   ]
 }

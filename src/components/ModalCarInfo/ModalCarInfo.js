@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import sprite from '../../images/sprite.svg';
-
+import EnterModal from '../EnterModal/EnterModal';
 import {
   ContainerModal,
   IconCloseStyle,
@@ -20,8 +20,10 @@ import {
 } from './ModalCarInfo.styled';
 
 export const ModalCarInfo = ({onClose, fullAdvertInfo }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   if (!fullAdvertInfo) {
-    return null; // або інша логіка обробки відсутності advertInfo
+    return null; 
   }
   const {
     img,
@@ -39,7 +41,11 @@ export const ModalCarInfo = ({onClose, fullAdvertInfo }) => {
     rentalPrice,
   } = fullAdvertInfo;
 
+
+
+
   return (
+    <>
     <ModalBackDrop>
       <ContainerModal>
         <ButtonCloseStyle onClick={onClose}>
@@ -54,7 +60,7 @@ export const ModalCarInfo = ({onClose, fullAdvertInfo }) => {
         <ContainerInfoCar>
           <div>
             <TitleStyle>
-              {make} <TitleStyleSpan> {model} </TitleStyleSpan>, {year}
+              {make}<TitleStyleSpan> {" "} {model} </TitleStyleSpan>, {year}
             </TitleStyle>
 
             <ParagraphInfoStyle>
@@ -89,9 +95,16 @@ export const ModalCarInfo = ({onClose, fullAdvertInfo }) => {
               </li>
             </RentalStyleContainer>
           </div>
-          <ButtonStyle>Rental car</ButtonStyle>
+          <ButtonStyle type="button" onClick={() => setIsOpen(true)}>Rental car</ButtonStyle>
         </ContainerInfoCar>
       </ContainerModal>
     </ModalBackDrop>
+    {isOpen && (
+        <EnterModal
+        onClose={() => setIsOpen(false)}
+        isOpen={isOpen}
+        />
+      )}
+    </>
   );
 };

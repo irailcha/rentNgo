@@ -38,6 +38,7 @@ const SwiperSlider = () => {
           virtual
           navigation
           pagination={{ clickable: true }}
+          
         >
           {images.map((img, index) => (
             <SwiperSlide key={index} virtualIndex={index}>

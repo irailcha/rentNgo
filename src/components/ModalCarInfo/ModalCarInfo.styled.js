@@ -72,7 +72,7 @@ export const ParagraphInfoStyle = styled.p`
 `;
 
 export const InfoTitleStyle = styled.h3`
-  font-weight: 500;
+  font-weight: 400;
   font-size: 14px;
   line-height: 20px;
   margin-bottom: 8px;

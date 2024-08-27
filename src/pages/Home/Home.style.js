@@ -9,5 +9,6 @@ export const Title = styled.h1`
 `;
 
 export const Container = styled.div`
+padding-top: 50px;
   height: 100vh;
 `;

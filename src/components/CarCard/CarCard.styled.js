@@ -11,7 +11,6 @@ export const CarBaseInfoStyle = styled.p`
   font-weight: 400;
   font-size: 12px;
   line-height: 18px;
-
   color: #000000;
 `;
 

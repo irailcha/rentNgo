@@ -40,6 +40,7 @@ export const ButtonUpPage = styled.button`
 `;
 
 export const ContainerAdverts = styled.div`
+padding-top: 50px;
   border-radius: 12px;
   background-image: url(${backgroundImage});
   background-size: cover;

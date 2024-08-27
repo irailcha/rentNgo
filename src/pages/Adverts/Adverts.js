@@ -1,10 +1,12 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback} from 'react';
 import { CarList } from '../../components/CarList/CarList';
 import { SearchForm } from '../../components/SearchForm/SearchForm';
 import { ButtonStyle, ButtonUpPage, ContainerAdverts } from './Adverts.style';
 import { GoArrowUp } from 'react-icons/go';
 import { Loader } from '../../components/helpers/Loader';
 import advertsData from '../../adverts.js'; 
+
+
 
 const Adverts = () => {
   const [adverts] = useState(advertsData);
@@ -17,6 +19,8 @@ const Adverts = () => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [favoriteList, setFavoriteList] = useState([]);
   const itemsPerPage = 6;
+
+
 
   const loadMore = useCallback(() => {
     setIsLoading(true);

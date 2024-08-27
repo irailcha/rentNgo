@@ -18,11 +18,20 @@ export const LabelStyleForm = styled.label`
 `;
 
 export const FormStyle = styled(Form)`
+
   display: flex;
+  flex-direction: row;
   gap: 18px;
   margin-bottom: 50px;
-  justify-content: center;
-  align-items: flex-end;
+  justify-content: center; 
+align-items: flex-end;
+ 
+
+
+  @media (max-width: 480px){
+  flex-direction: column;
+   align-items: center;
+  }
 `;
 
 export const MieleageStyleForm = styled.div`
